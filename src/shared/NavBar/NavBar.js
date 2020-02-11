@@ -1,11 +1,13 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+// material
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar'
+import LogIn from './LogIn';
+import * as firebase from 'firebase';
 // import MenuIcon from '@material-ui/icons/Menu';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,8 +21,23 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
+
+
 // A new way to define stateless Components? haha
 export default function NavBar() {
+    
+   function authListener(){
+        firebase.auth().onAuthStateChanged((user)=>{
+            console.log(user)
+        })
+    }
+
+  const [logStatus,setLogStatus] = useState(false);
+
+  useEffect(()=> {
+    authListener()
+  })    
   const classes = useStyles();
 
   return (
@@ -31,7 +48,9 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             1000Pi
           </Typography>
-          <Button color="inherit">Login</Button>
+            {/* {logStatus} */}
+            <LogIn></LogIn>
+            {/* <LogStatus logStatus={logStatus} setLogStatus={setLogStatus}></LogStatus> */}
         </Toolbar>
       </AppBar>
     </div>
