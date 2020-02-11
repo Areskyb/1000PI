@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-             {process.env.REACT_APP_API_KEY}
+          
         </p>
         <a
           className="App-link"
