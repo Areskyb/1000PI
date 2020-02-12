@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Logged from './Logged';
 import LogIn from './LogIn';
 import * as firebase from 'firebase';
 // import MenuIcon from '@material-ui/icons/Menu';
@@ -29,11 +30,15 @@ export default function NavBar() {
     
    function authListener(){
         firebase.auth().onAuthStateChanged((user)=>{
-            console.log(user)
+          if (user){
+            setLogStatus(true)
+          }else{
+            setLogStatus(false)
+          }
         })
     }
 
-  const [logStatus,setLogStatus] = useState(false);
+  const [logStatus,setLogStatus] = useState(authListener());  
 
   useEffect(()=> {
     authListener()
@@ -48,8 +53,8 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             1000Pi
           </Typography>
-            {/* {logStatus} */}
-            <LogIn></LogIn>
+          {/* displays if the user is logged or not logged */}
+            {logStatus?  <Logged></Logged>: <LogIn></LogIn>}
             {/* <LogStatus logStatus={logStatus} setLogStatus={setLogStatus}></LogStatus> */}
         </Toolbar>
       </AppBar>

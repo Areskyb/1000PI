@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from '@material-ui/core/Button'
+import Avatar from '@material-ui/core/Avatar'
 
 function Logged(){
     return(
-        <Button color="inherit" >Login</Button>
+        <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
     )
 }
 
