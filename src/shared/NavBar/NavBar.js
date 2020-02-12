@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Logged from './Logged';
 import LogIn from './LogIn';
 import * as firebase from 'firebase';
+import 'typeface-roboto';
+
 // import MenuIcon from '@material-ui/icons/Menu';
 
 
@@ -49,8 +51,7 @@ export default function NavBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-        
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h4" className={classes.title}>
             1000Pi
           </Typography>
           {/* displays if the user is logged or not logged */}
