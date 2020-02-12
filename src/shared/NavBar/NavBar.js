@@ -29,22 +29,25 @@ const useStyles = makeStyles(theme => ({
 
 // A new way to define stateless Components? haha
 export default function NavBar() {
-    
+
+
+    // checks the log in status in firebase
    function authListener(){
         firebase.auth().onAuthStateChanged((user)=>{
           if (user){
-            setLogStatus(true)
+            return setLogStatus(true)
           }else{
-            setLogStatus(false)
+            return setLogStatus(false)
           }
         })
     }
 
-  const [logStatus,setLogStatus] = useState(authListener());  
+
+  const [logStatus,setLogStatus] = useState(false);  
 
   useEffect(()=> {
     authListener()
-  })    
+  },[])    
   const classes = useStyles();
 
   return (
