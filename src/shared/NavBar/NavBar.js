@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button'
 import Logged from './Logged';
 import LogIn from './LogIn';
 import * as firebase from 'firebase';
@@ -55,7 +56,7 @@ export default function NavBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
-            1000Pi
+              <Button onClick={(e)=> window.location.href="/"}>1000Pi </Button>
           </Typography>
           {/* displays if the user is logged or not logged */}
             {logStatus?  <Logged></Logged>: <LogIn></LogIn>}
