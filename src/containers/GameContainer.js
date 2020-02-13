@@ -7,6 +7,10 @@ import {
 } from "react-router-dom";
 import Relationships from '../components/Relationships'
 import Track from '../components/Track'
+import WordDecoding from '../components/WordDecoding'
+import WordChallenge from '../components/WordChallenge'
+import Decoding from '../components/Decoding'
+import ThousandPi from '../components/ThousandPi'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
@@ -71,23 +75,23 @@ function GameConatainer(){
           </Route>
 
           <Route exact path="/20 Words Challenge">
-            <Relationships setGameTitle={setGameTitle}></Relationships>
+            <WordChallenge setGameTitle={setGameTitle}></WordChallenge>
           </Route>
           
           <Route exact path="/100 Words Challenge">
-            <Relationships setGameTitle={setGameTitle}></Relationships>
+            <WordChallenge setGameTitle={setGameTitle}></WordChallenge>
           </Route>
 
           <Route exact path="/Decoding">
-            <Relationships setGameTitle={setGameTitle}></Relationships>
+            <Decoding setGameTitle={setGameTitle}></Decoding>
           </Route>
 
           <Route exact path="/100 Words Decoding">
-            <Relationships setGameTitle={setGameTitle}></Relationships>
+            <WordDecoding setGameTitle={setGameTitle}></WordDecoding>
           </Route>
 
           <Route exact path="/1000 PI">
-            <Relationships setGameTitle={setGameTitle}></Relationships>
+            <ThousandPi setGameTitle={setGameTitle}></ThousandPi>
           </Route>
           
 
