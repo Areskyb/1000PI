@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Track from '../components/Track'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
@@ -35,22 +36,37 @@ function GameConatainer(){
 
 
 
-    const [title,setTitle] = useState("Your track")
+    const [gameTitle,setGameTitle] = useState("Your track")
 
     return(
         <Container style={style}>
                <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            {title}
+            {gameTitle}
           </Typography>
             <IconButton>
-            <InfoOutlinedIcon elementType="button"></InfoOutlinedIcon>
+            <InfoOutlinedIcon></InfoOutlinedIcon>
             </IconButton>
         </Toolbar>
       </AppBar>
+      <Track></Track>
       </Container>
     )
 }
 
 export default GameConatainer
+
+{/* <Router>
+
+<Switch>
+    <Route exact path="/true">
+    <Activity isAchived={true}></Activity>
+    </Route>
+
+    <Route exact path="/false">
+    <Activity isAchived={false}></Activity>
+    </Route>
+
+</Switch>
+</Router> */}
