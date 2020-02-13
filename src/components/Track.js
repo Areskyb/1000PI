@@ -1,11 +1,11 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Activity from './Activity'
 import {
    
   } from "react-router-dom";
 
 
-function Track(){
+function Track({setGameTitle}){
 
     const [trackState, setTrackState] = useState({
         activityOne:true,
@@ -17,6 +17,12 @@ function Track(){
 
     })
 
+    useEffect(() => {
+        setGameTitle("Your Track")
+        return () => {
+
+        };
+    }, [])
     
     return(
         <>

@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+import {
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  Link
+} from "react-router-dom";
+import Relationships from '../components/Relationships'
 import Track from '../components/Track'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles';
@@ -50,7 +57,21 @@ function GameConatainer(){
             </IconButton>
         </Toolbar>
       </AppBar>
-      <Track></Track>
+
+      <Router>
+
+      <Switch>
+
+          <Route exact path="/">
+            <Track setGameTitle={setGameTitle}></Track>
+          </Route>
+
+          <Route exact path="/Relationships">
+            <Relationships setGameTitle={setGameTitle}></Relationships>
+          </Route>
+
+      </Switch>
+      </Router>
       </Container>
     )
 }
