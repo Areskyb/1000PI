@@ -70,6 +70,27 @@ function GameConatainer(){
             <Relationships setGameTitle={setGameTitle}></Relationships>
           </Route>
 
+          <Route exact path="/20 Words Challenge">
+            <Relationships setGameTitle={setGameTitle}></Relationships>
+          </Route>
+          
+          <Route exact path="/100 Words Challenge">
+            <Relationships setGameTitle={setGameTitle}></Relationships>
+          </Route>
+
+          <Route exact path="/Decoding">
+            <Relationships setGameTitle={setGameTitle}></Relationships>
+          </Route>
+
+          <Route exact path="/100 Words Decoding">
+            <Relationships setGameTitle={setGameTitle}></Relationships>
+          </Route>
+
+          <Route exact path="/1000 PI">
+            <Relationships setGameTitle={setGameTitle}></Relationships>
+          </Route>
+          
+
       </Switch>
       </Router>
       </Container>
