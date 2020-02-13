@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import TextField from '@material-ui/core/TextField'
 
 function Relationships({setGameTitle}){
     
@@ -8,8 +9,19 @@ function Relationships({setGameTitle}){
             
         };
     }, [])
+
+
+
+    const submit = event => {
+        console.log("submited");
+        event.preventDefault();
+    }
+
     return(
-        <h3>Relationships</h3>
+        <form    onSubmit={submit}>
+      <TextField id="standard-basic" label="Standard" />
+
+    </form>
     )
 }
 
