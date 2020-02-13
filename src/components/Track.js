@@ -4,9 +4,10 @@ import {
    
   } from "react-router-dom";
 
-
+// Track component loads the activities from the user
 function Track({setGameTitle}){
 
+    // all the states That the user has achived
     const [trackState, setTrackState] = useState({
         activityOne:true,
         activityTwo:false,
@@ -17,10 +18,11 @@ function Track({setGameTitle}){
 
     })
 
+    // TODO: fetch the user data to set the tracState
     useEffect(() => {
         setGameTitle("Your Track")
         return () => {
-
+            
         };
     }, [])
     
