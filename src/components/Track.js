@@ -1,11 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import Activity from './Activity'
-import {
-   
-  } from "react-router-dom";
 
 // Track component loads the activities from the user
-function Track({setGameTitle}){
+function Track({setGameTitle,history}){
 
     // all the states That the user has achived
     const [trackState, setTrackState] = useState({
@@ -25,15 +22,18 @@ function Track({setGameTitle}){
             
         };
     }, [])
+
+   
     
     return(
         <>
-       <Activity activityName="Relationships" acitvityNumber="1" isAchived={trackState.activityOne}></Activity>
-       <Activity activityName="20 Words Challenge" acitvityNumber="2" isAchived={trackState.activityTwo}></Activity>
-       <Activity activityName="100 Words Challenge" acitvityNumber="3" isAchived={trackState.activityTwo}></Activity>
-       <Activity activityName="Decoding" acitvityNumber="4" isAchived={trackState.activityFour}></Activity>
-       <Activity activityName="Decoding 100 Words" acitvityNumber="5" isAchived={trackState.activityFour}></Activity>
-       <Activity activityName="1000 PI" acitvityNumber="6" isAchived={trackState.activitySix}></Activity>
+
+            <Activity activityName="Relationships" acitvityNumber="1" isAchived={trackState.activityOne}></Activity>
+            <Activity activityName="20 Words Challenge" acitvityNumber="2" isAchived={trackState.activityTwo}></Activity>
+            <Activity activityName="100 Words Challenge" acitvityNumber="3" isAchived={trackState.activityTwo}></Activity>
+            <Activity activityName="Decoding" acitvityNumber="4" isAchived={trackState.activityFour}></Activity>
+            <Activity activityName="Decoding 100 Words" acitvityNumber="5" isAchived={trackState.activityFour}></Activity>
+            <Activity activityName="1000 PI" acitvityNumber="6" isAchived={trackState.activitySix}></Activity>
 
         </>
     )
