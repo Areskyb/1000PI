@@ -61,7 +61,7 @@ function GameConatainer(){
         </Toolbar>
       </AppBar>
 
-      <Router history>
+      <Router>
 
       <Switch>
 
@@ -101,17 +101,3 @@ function GameConatainer(){
 }
 
 export default GameConatainer
-
-{/* <Router>
-
-<Switch>
-    <Route exact path="/true">
-    <Activity isAchived={true}></Activity>
-    </Route>
-
-    <Route exact path="/false">
-    <Activity isAchived={false}></Activity>
-    </Route>
-
-</Switch>
-</Router> */}

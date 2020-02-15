@@ -18,7 +18,7 @@ function Relationships({setGameTitle}){
         return () => {
             
         };
-    }, [])
+    }, [setGameTitle])
 
     if(!result){
 

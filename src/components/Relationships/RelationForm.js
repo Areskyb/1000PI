@@ -37,7 +37,7 @@ function RelationForm({setResult,setWordCount,wordCount}){
 
     return(
     <form onSubmit={submit}>
-      <TextField id="standard-basic" label="Standard" value={description} onChange={handleChange} />
+      <TextField id="standard-basic" label="Create a relationship between this two words an then press ENTER" value={description} onChange={handleChange}  fullWidth/>
       <Button onClick={submit}> next</Button>
       <Button onClick={finishTask}> finish</Button>
     </form>
