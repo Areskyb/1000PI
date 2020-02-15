@@ -6,6 +6,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import CardActions from '@material-ui/core/CardActionArea'
 import Typography from '@material-ui/core/Typography'
 import { Container} from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
     function Activity({isAchived,activityName,acitvityNumber}){
 
@@ -13,14 +14,15 @@ import { Container} from '@material-ui/core';
         <>
         <Card>
         <CardContent>
-        <CardActions onClick={(e)=> window.location.href=`/${activityName}`}>
+        <Link to={`/${activityName}`}>
+        <CardActions>
     <Typography variant='subtitle1'>Activity:{acitvityNumber}</Typography>
     <Typography variant="h2">{activityName}</Typography>
         <Container style={{textAlign:"end"}}>
           {isAchived? <LockOpenIcon/>: <LockOutlinedIcon></LockOutlinedIcon>}
         </Container>
-  
         </CardActions>
+        </Link>
         </CardContent>
       </Card>
       </>
