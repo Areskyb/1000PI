@@ -6,6 +6,7 @@ var nouns = require('nouns');
 function WordChallenge({setGameTitle,words}){
    const wordList = useState(nouns.ran(words));
    const [count, setCount] = useState(0);
+   const [inTest,setTest] = useState(false);
 
     function next(){
         if(count < words){
@@ -24,7 +25,8 @@ function WordChallenge({setGameTitle,words}){
     if(count === 20){
         return(
             <>
-            <WordTest wordList={wordList}></WordTest>
+            {!inTest?<Button onClick={e => prev(e)}>go back to the words</Button>: <Button>Reset Test</Button>}
+            <WordTest wordList={wordList} setTest={setTest}></WordTest>
             </>
         )
     }

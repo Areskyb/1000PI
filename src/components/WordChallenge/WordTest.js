@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { Button } from '@material-ui/core'
 
-function WordTest({wordList}){
+function WordTest({wordList,setTest}){
         const [inTest, setInTest] = useState(false)
 
         if(inTest){
@@ -10,7 +10,7 @@ function WordTest({wordList}){
             )
         }else{
             return(
-                <Button onClick={e => setInTest(true)}>Make Test</Button>
+                <Button onClick={e => {setInTest(true);setTest(true)}}>Make Test</Button>
 
             )
         }
