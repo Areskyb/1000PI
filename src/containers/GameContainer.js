@@ -3,9 +3,8 @@ import {
   Route,
   BrowserRouter as Router,
   Switch,
-  Link
 } from "react-router-dom";
-import Relationships from '../components/Relationships'
+import Relationships from '../components/Relationships/Relationships'
 import Track from '../components/Track'
 import WordDecoding from '../components/WordDecoding'
 import WordChallenge from '../components/WordChallenge'
@@ -62,11 +61,11 @@ function GameConatainer(){
         </Toolbar>
       </AppBar>
 
-      <Router>
+      <Router history>
 
       <Switch>
 
-          <Route exact path="/">
+          <Route exact path="/" >
             <Track setGameTitle={setGameTitle}></Track>
           </Route>
 
