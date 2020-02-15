@@ -7,7 +7,7 @@ import {
 import Relationships from '../components/Relationships/Relationships'
 import Track from '../components/Track'
 import WordDecoding from '../components/WordDecoding'
-import WordChallenge from '../components/WordChallenge'
+import WordChallenge from '../components/WordChallenge/WordChallenge'
 import Decoding from '../components/Decoding'
 import ThousandPi from '../components/ThousandPi'
 import Container from '@material-ui/core/Container'
@@ -74,7 +74,7 @@ function GameConatainer(){
           </Route>
 
           <Route exact path="/20 Words Challenge">
-            <WordChallenge setGameTitle={setGameTitle}></WordChallenge>
+            <WordChallenge words={20} setGameTitle={setGameTitle}></WordChallenge>
           </Route>
           
           <Route exact path="/100 Words Challenge">
