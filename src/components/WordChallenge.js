@@ -2,7 +2,6 @@ import React,{useEffect} from 'react';
 import {Description} from '@material-ui/icons'
 
 function WordChallenge({setGameTitle}){
-
     useEffect(() => {
         setGameTitle("WordChallenge")
         return () => {
