@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import { Button } from '@material-ui/core';
-
+import WordTest from './WordTest';
 // import Words
 var nouns = require('nouns');
 function WordChallenge({setGameTitle,words}){
@@ -24,8 +24,7 @@ function WordChallenge({setGameTitle,words}){
     if(count === 20){
         return(
             <>
-            <Button onClick={e => prev(e)}>prev</Button>
-            <Button>finish</Button>
+            <WordTest wordList={wordList}></WordTest>
             </>
         )
     }
