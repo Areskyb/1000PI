@@ -56,8 +56,9 @@ export default function NavBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
-              <Button onClick={(e)=> window.location.href="/"}>1000Pi </Button>
+            1000 PI
           </Typography>
+
           {/* displays if the user is logged or not logged */}
             {logStatus?  <Logged></Logged>: <LogIn></LogIn>}
             {/* <LogStatus logStatus={logStatus} setLogStatus={setLogStatus}></LogStatus> */}
