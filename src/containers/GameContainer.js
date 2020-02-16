@@ -78,7 +78,7 @@ function GameConatainer(){
           </Route>
           
           <Route exact path="/100 Words Challenge">
-            <WordChallenge setGameTitle={setGameTitle}></WordChallenge>
+            <WordChallenge words={100} setGameTitle={setGameTitle}></WordChallenge>
           </Route>
 
           <Route exact path="/Decoding">
