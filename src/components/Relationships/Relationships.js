@@ -3,7 +3,7 @@ import RelationForm from './RelationForm'
 import WordsProvider from './WordsProvider';
 import RelationsList from './RelationsList'
 
-function Relationships({setGameTitle}){
+function Relationships({setGameTitle,setDialogContent}){
 
     const [result,setResult] = useState(null);
     const[wordCount,setWordCount] = useState(0);
@@ -15,6 +15,7 @@ function Relationships({setGameTitle}){
 
     useEffect(() => {
         setGameTitle("Relationships")
+        setDialogContent("Welcome to Relationships, in this exersice you have to write in the form a brief description from the two words given")
         return () => {
             
         };
