@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
 } from "react-router-dom";
+import CustomDialog from '../shared/CustomDialog'
 import Relationships from '../components/Relationships/Relationships'
 import Track from '../components/Track'
 import WordDecoding from '../components/WordDecoding'
@@ -16,7 +17,6 @@ import Typography from '@material-ui/core/Typography'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { IconButton } from '@material-ui/core'
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 
 function GameConatainer(){
@@ -44,6 +44,7 @@ function GameConatainer(){
 
     }
 
+    
 
 
     const [gameTitle,setGameTitle] = useState("Your track")
@@ -56,7 +57,7 @@ function GameConatainer(){
             {gameTitle}
           </Typography>
             <IconButton>
-            <InfoOutlinedIcon></InfoOutlinedIcon>
+              <CustomDialog></CustomDialog>
             </IconButton>
         </Toolbar>
       </AppBar>
