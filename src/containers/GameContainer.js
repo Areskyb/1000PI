@@ -48,6 +48,9 @@ function GameConatainer(){
 
 
     const [gameTitle,setGameTitle] = useState("Your track")
+    const [dialogContent,setDialogContent] = useState("");
+
+
 
     return(
         <Container style={style}>
@@ -56,9 +59,7 @@ function GameConatainer(){
           <Typography variant="h6" className={classes.title}>
             {gameTitle}
           </Typography>
-            <IconButton>
-              <CustomDialog></CustomDialog>
-            </IconButton>
+              <CustomDialog dialogContent={dialogContent} gameTitle={gameTitle}></CustomDialog>
         </Toolbar>
       </AppBar>
 
@@ -71,7 +72,7 @@ function GameConatainer(){
           </Route>
 
           <Route exact path="/Relationships">
-            <Relationships setGameTitle={setGameTitle}></Relationships>
+            <Relationships setGameTitle={setGameTitle} setDialogContent={setDialogContent} ></Relationships>
           </Route>
 
           <Route exact path="/20 Words Challenge">
