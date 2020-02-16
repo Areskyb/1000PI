@@ -8,12 +8,13 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+import CardMedia from '@material-ui/core/CardMedia'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function CustomDialog() {
+export default function CustomDialog({dialogContent,gameTitle}) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -37,10 +38,10 @@ export default function CustomDialog() {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">{"Relationships!! woooow!!"}</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">{gameTitle}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Explanation of what to do in the activity, it would be great to add some gifs and simple explanations
+            {dialogContent}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
