@@ -8,6 +8,12 @@ function WordChallenge({setGameTitle,words}){
    const [count, setCount] = useState(0);
    const [inTest,setTest] = useState(false);
 
+   useEffect(() => {
+       setGameTitle("Word Challenge!")
+       return () => {
+       };
+   }, [setGameTitle])
+
     function next(){
         if(count < words){
             let newCount = count +1;
@@ -22,10 +28,10 @@ function WordChallenge({setGameTitle,words}){
             }return
         
     }
-    if(count === 20){
+    if(count === words){
         return(
             <>
-            {!inTest?<Button onClick={e => prev(e)}>go back to the words</Button>: <Button>Reset Test</Button>}
+            {!inTest?<Button onClick={e => setCount(0)}>go back to the words</Button>: <Button onClick={e => setCount(0)}>Go back to the words!</Button>}
             <WordTest wordList={wordList} setTest={setTest}></WordTest>
             </>
         )
