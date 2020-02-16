@@ -1,4 +1,6 @@
 import React from 'react';
+import {IconButton} from '@material-ui/core/'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -24,9 +26,9 @@ export default function CustomDialog() {
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Slide in alert dialog
-      </Button>
+      <IconButton onClick={handleClickOpen}>
+      <InfoOutlinedIcon></InfoOutlinedIcon>
+      </IconButton>
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -35,19 +37,15 @@ export default function CustomDialog() {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">{"Relationships!! woooow!!"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
+            Explanation of what to do in the activity, it would be great to add some gifs and simple explanations
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Disagree
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Agree
+          Cool!  
           </Button>
         </DialogActions>
       </Dialog>
