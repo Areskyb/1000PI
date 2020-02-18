@@ -9,7 +9,7 @@ function Track({setGameTitle,history}){
         activityOne:true,
         activityTwo:true,
         activityThree:true,
-        activityFour:false,
+        activityFour:true,
         activityFive:false,
         activitySix:false,
 
@@ -32,7 +32,7 @@ function Track({setGameTitle,history}){
             <Activity activityName="20 Words Challenge" acitvityNumber="2" isAchived={trackState.activityTwo}></Activity>
             <Activity activityName="100 Words Challenge" acitvityNumber="3" isAchived={trackState.activityThree}></Activity>
             <Activity activityName="Decoding" acitvityNumber="4" isAchived={trackState.activityFour}></Activity>
-            <Activity activityName="Decoding 100 Words" acitvityNumber="5" isAchived={trackState.activityFour}></Activity>
+            <Activity activityName="Decoding 100 Words" acitvityNumber="5" isAchived={trackState.activityFive}></Activity>
             <Activity activityName="1000 PI" acitvityNumber="6" isAchived={trackState.activitySix}></Activity>
 
         </>

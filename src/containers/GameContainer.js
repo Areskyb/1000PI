@@ -9,7 +9,7 @@ import Relationships from '../components/Relationships/Relationships'
 import Track from '../components/Track'
 import WordDecoding from '../components/WordDecoding'
 import WordChallenge from '../components/WordChallenge/WordChallenge'
-import Decoding from '../components/Decoding'
+import Decoding from '../components/Decoding/Decoding'
 import ThousandPi from '../components/ThousandPi'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles';
