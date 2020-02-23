@@ -19,14 +19,14 @@ function createData(number,sound,word) {
 }
 
 const rows = [
-  createData(0,'Z, S',"zero sounds like s"),
+  createData(0,'Z, S, soft "c"',"zero sounds like s"),
   createData(1,'t, d', 't has 1 downstroke(d sounds like t)'),
   createData(2, 'n', 'has two downstrokes'),
   createData(3, 'M', 'has 3 downtrokes'),
   createData(4, 'R', 'is similar as a mirror 4R'),
   createData(5, 'L', '50 in roman'),
-  createData(6, 'G, J', "looks like 6, sounds like J"),
-  createData(7, 'K', "two sevens mirrored, sounds like c"),
+  createData(6, 'G,J,sh, soft "ch", dg, zh, soft "g"', "looks like 6, sounds like J"),
+  createData(7, 'K, hard "c", hard "g", hard "ch", q, qu', "two sevens mirrored, sounds like c"),
   createData(8, 'f, V', 'f looks like 8 when is hand written'),
   createData(9, 'p,b', ' p is the mirror of 9'),
 ];

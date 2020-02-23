@@ -3,22 +3,19 @@ import CheatSheet from './CheatSheet';
 import WordForm from './WordForm';
 
 
-var nouns = require('nouns');
 function Decoding({setGameTitle}){
 
 
     useEffect(() => {
-        setGameTitle("Decoding")
+        setGameTitle("Decoding practice")
         return () => {
             
         };
     }, [setGameTitle])
     return(
         <>
-       <h3>Decoding</h3>
-        {/* <CheatSheet></CheatSheet> */}
         <WordForm></WordForm>
-        
+        <CheatSheet></CheatSheet>
         </>
     )
 
