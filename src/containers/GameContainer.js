@@ -7,7 +7,7 @@ import {
 import CustomDialog from '../shared/CustomDialog'
 import Relationships from '../components/Relationships/Relationships'
 import Track from '../components/Track'
-import WordDecoding from '../components/WordDecoding'
+import WordDecoding from '../components/WordDecoding/WordDecoding'
 import WordChallenge from '../components/WordChallenge/WordChallenge'
 import Decoding from '../components/Decoding/Decoding'
 import ThousandPi from '../components/ThousandPi'
@@ -87,7 +87,7 @@ function GameConatainer(){
             <Decoding setGameTitle={setGameTitle}></Decoding>
           </Route>
 
-          <Route exact path="/100 Words Decoding">
+          <Route exact path="/Decoding Challenge">
             <WordDecoding setGameTitle={setGameTitle}></WordDecoding>
           </Route>
 
