@@ -10,7 +10,7 @@ function Track({setGameTitle,history}){
         activityTwo:true,
         activityThree:true,
         activityFour:true,
-        activityFive:false,
+        activityFive:true,
         activitySix:false,
 
     })
