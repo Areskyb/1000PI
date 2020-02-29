@@ -5,18 +5,12 @@ import LockOpenIcon from '@material-ui/icons/LockOpen'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import CardActions from '@material-ui/core/CardActionArea'
 import Typography from '@material-ui/core/Typography'
-import { Container, Dialog} from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import CustomDialog from '../shared/CustomDialog'
+
+// Activity => renders a button from the track
 
     function Activity({isAchived,activityName,acitvityNumber}){
-
-      function dialog() {
-        return(
-          <h1>hi</h1>
-        )
-      }
-
       if(isAchived){
 
         return(
@@ -40,7 +34,7 @@ import CustomDialog from '../shared/CustomDialog'
         return(
           <Card>
             <CardContent>
-              <CardActions onClick={e => dialog()}>
+              <CardActions>
               <Typography variant='subtitle1'>Activity:{acitvityNumber}</Typography>
                 <Typography variant="h2">{activityName}</Typography>
                 <Container style={{textAlign:"end"}}>
