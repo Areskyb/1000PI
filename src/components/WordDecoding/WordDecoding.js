@@ -4,7 +4,7 @@ import WordChallengeForm from './WordChallengeForm';
 function WordDecoding({setGameTitle}){
 
     useEffect(() => {
-        setGameTitle('Decoding Challenge')
+        setGameTitle('Numbers to words')
         return () => {
         };
     }, [setGameTitle])
