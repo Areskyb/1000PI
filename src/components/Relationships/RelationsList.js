@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button'
 import List from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import { Typography } from '@material-ui/core';
 
 function RelationsList({result,resetGame,generatedWords}){
     
@@ -17,9 +18,9 @@ function RelationsList({result,resetGame,generatedWords}){
     return(
     <>
     <Button onClick={resetGame}>Reset</Button>
-    <ul>
+        <Typography variant="h2"> Your relationships </Typography>
         {listResult}
-    </ul>
+
     </>
     )
 }

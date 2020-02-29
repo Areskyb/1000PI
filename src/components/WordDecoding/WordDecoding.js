@@ -1,4 +1,5 @@
 import React,{useEffect} from 'react';
+import WordChallengeForm from './WordChallengeForm';
 
 function WordDecoding({setGameTitle}){
 
@@ -9,7 +10,7 @@ function WordDecoding({setGameTitle}){
     }, [setGameTitle])
 
     return(
-        <h3>Description</h3>
+        <WordChallengeForm></WordChallengeForm>
     )
 
 }

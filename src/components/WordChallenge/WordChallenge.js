@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import WordTest from './WordTest';
 // import Words
 var nouns = require('nouns');
@@ -39,10 +39,10 @@ function WordChallenge({setGameTitle,words}){
 
     return(
         <>
-        <h1>{wordList[0][count]}</h1>
+        <Typography variant="h1">{wordList[0][count]}</Typography>
         <Button onClick={e => prev(e)}>prev</Button>
         <Button onClick={e =>next(e)}>next</Button>
-        <h3>Word Count: {count + 1}</h3>
+        <Typography variant="h3">Word Count: {count + 1}</Typography>
         </>
     )
 

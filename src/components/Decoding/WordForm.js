@@ -36,7 +36,7 @@ function WordForm () {
     const [userResult, setUserResult] = useState('');
     
     function checkResult(event){
-        console.table([{'Word to check': currentWord[0], 'Decode result': decode(currentWord[0]), 'User result': userResult}]);
+        console.table([{'Word to check': currentWord[0], 'Decode result': decode(userResult), 'User result': userResult}]);
         // console.log(typeof userResult);
         setCurrentWord(nouns.ran(1));
         setUserResult('');
@@ -45,17 +45,7 @@ function WordForm () {
 
     // should return the decoding of the word
     function decode (word) {
-        let result = [];
-            for(let i = 0; i < word.length ; i ++ ){
-                if(forgottenValues.includes(word[i])){
-                }else{
-                    console.log(associationTable[word[i]]);
-                    
-                    result.push(associationTable[word[i]]);
-                }
-            }
-            console.log('result =>', result);
-            return parseInt(result.join(''));
+        
     }
 
     function handleChange (event) {
@@ -66,7 +56,6 @@ function WordForm () {
         <form onSubmit={checkResult}>
             <h1>{currentWord}</h1>
             <Input type='number'  value ={userResult} onChange={handleChange}></Input>
-
         </form>
     );
         
