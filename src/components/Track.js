@@ -31,8 +31,8 @@ function Track({setGameTitle,history}){
             <Activity activityName="Relationships" acitvityNumber="1" isAchived={trackState.activityOne}></Activity>
             <Activity activityName="20 Words Challenge" acitvityNumber="2" isAchived={trackState.activityTwo}></Activity>
             <Activity activityName="100 Words Challenge" acitvityNumber="3" isAchived={trackState.activityThree}></Activity>
-            <Activity activityName="Decoding" acitvityNumber="4" isAchived={trackState.activityFour}></Activity>
-            <Activity activityName="Decoding Challenge" acitvityNumber="5" isAchived={trackState.activityFive}></Activity>
+            <Activity activityName="Words to numbers" acitvityNumber="4" isAchived={trackState.activityFour}></Activity>
+            <Activity activityName="Numbers to words" acitvityNumber="5" isAchived={trackState.activityFive}></Activity>
             <Activity activityName="1000 PI" acitvityNumber="6" isAchived={trackState.activitySix}></Activity>
 
         </>

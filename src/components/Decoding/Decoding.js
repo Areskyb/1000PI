@@ -7,7 +7,7 @@ function Decoding({setGameTitle}){
 
 
     useEffect(() => {
-        setGameTitle("Decoding practice")
+        setGameTitle("Words to numbers")
         return () => {
             
         };
