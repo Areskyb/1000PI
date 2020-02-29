@@ -5,7 +5,7 @@ import Activity from './Activity'
 function Track({setGameTitle,history}){
 
     // all the states That the user has achived
-    const [trackState, setTrackState] = useState({
+    const [trackState] = useState({
         activityOne:true,
         activityTwo:true,
         activityThree:true,

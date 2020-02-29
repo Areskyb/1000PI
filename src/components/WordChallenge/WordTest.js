@@ -25,12 +25,13 @@ function WordTest({wordList,setTest}){
                 
             }
             let finalResult = result.map((word,index) => {
+                
                 if(word !== undefined){
                     return(
                         <ListItem key={index}  button onClick={e => console.log("incorrect")}> {word} </ListItem>
                         )
                     }
-
+                    return null;
             })
             return finalResult;
 

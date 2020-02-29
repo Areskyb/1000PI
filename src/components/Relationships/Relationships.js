@@ -19,7 +19,7 @@ function Relationships({setGameTitle,setDialogContent}){
         return () => {
             
         };
-    }, [setGameTitle])
+    }, [setGameTitle,setDialogContent])
 
     if(!result){
 

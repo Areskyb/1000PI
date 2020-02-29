@@ -2,32 +2,31 @@ import React, {useState} from 'react';
 import { Input } from '@material-ui/core';
 
 const nouns = require('nouns');
-const associationTable = {
-    'z': "0",
-    's': "0",
-    'c': "0",
-    'd': "1",
-    't': "1",
-    'n': "2",
-    'm': "3",
-    'r': "4",
-    'l': "5",
-    'j': "6",
-    'ch': "6",
-    'dg': "6",
-    'zh': "6",
-    'g': "6",
-    'k': "7",
-    'c': "7",
-    'g': "7",
-    'ch': "7",
-    'q': "7",
-    'f': "8",
-    'v': "8",
-    'b': "9",
-    'p': "9"
-}
-const forgottenValues = ['a','e','i','o','u','w','h']
+// const associationTable = {
+//     'z': "0",
+//     's': "0",
+//     'c': "0",
+//     'd': "1",
+//     't': "1",
+//     'n': "2",
+//     'm': "3",
+//     'r': "4",
+//     'l': "5",
+//     'j': "6",
+//     'ch': "6",
+//     'dg': "6",
+//     'zh': "6",
+//     'g': "6",
+//     'k': "7",
+//     'c': "7",
+//     'g': "7",
+//     'ch': "7",
+//     'q': "7",
+//     'f': "8",
+//     'v': "8",
+//     'b': "9",
+//     'p': "9"
+// }
 
 
 function WordForm () {

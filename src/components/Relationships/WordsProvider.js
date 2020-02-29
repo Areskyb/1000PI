@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 var nouns = require('nouns');
 function WordsProvider({wordCount}){
     // generates random words from package
     const ranWords = nouns.ran(20)
-    const [words,setWords] = useState(ranWords);
+    const [words] = useState(ranWords);
     
     function camelize(str) {
         return str.replace(/\W+(.)/g, function(match, chr)
