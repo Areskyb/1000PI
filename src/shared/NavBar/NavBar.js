@@ -54,7 +54,7 @@ export default function NavBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h4" className={classes.title}>
+          <Typography variant="h4" className={classes.title} onClick={e=>console.log('hi')}>
             1000 PI
           </Typography>
 

@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { Button, ListItem } from '@material-ui/core'
+import { Button, ListItem, Typography } from '@material-ui/core'
 
 function WordTest({wordList,setTest}){
     // check if the test is being made 
@@ -66,11 +66,9 @@ function WordTest({wordList,setTest}){
         if(inTest && !isWon){
             return(
                 <>
-                <h3>select the correct word</h3>
-                <ul>
+                <Typography variant = "h3">Select the correct word</Typography>
                     {options}
                     {/* {console.log(wordList)} */}
-                </ul>
                 </>
             )
         }else if(!isWon){
@@ -79,7 +77,7 @@ function WordTest({wordList,setTest}){
             )
         }else{
             return(
-                <h1>You won!</h1>
+                <Typography variant ="h1">You won!</Typography>
             )
         }
 }

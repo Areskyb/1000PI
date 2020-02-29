@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Input } from '@material-ui/core';
+import { Input, Typography } from '@material-ui/core';
 
 const nouns = require('nouns');
 // const associationTable = {
@@ -38,7 +38,7 @@ function WordForm () {
         console.table([{'Word to check': currentWord[0], 'Decode result': decode(userResult), 'User result': userResult}]);
         // console.log(typeof userResult);
         setCurrentWord(nouns.ran(1));
-        setUserResult('');
+        setUserResult('')
         event.preventDefault();
     }
 
@@ -53,7 +53,7 @@ function WordForm () {
 
     return(
         <form onSubmit={checkResult}>
-            <h1>{currentWord}</h1>
+            <Typography variant="h1">{currentWord}</Typography>
             <Input type='number'  value ={userResult} onChange={handleChange}></Input>
         </form>
     );
