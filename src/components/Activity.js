@@ -15,19 +15,19 @@ import { Link } from 'react-router-dom';
 
         return(
           <>
+        <Link to={`/${activityName}`}>
         <Card>
             <CardContent>
               <CardActions>
               <Typography variant='subtitle1'>Activity:{acitvityNumber}</Typography>
-                <Link to={`/${activityName}`}>
                 <Typography variant="h2">{activityName}</Typography>
                 <Container style={{textAlign:"end"}}>
                    <LockOpenIcon/>
                 </Container>
-              </Link>
             </CardActions>
           </CardContent>
         </Card>
+        </Link>
           </>
                 )
       }else{
