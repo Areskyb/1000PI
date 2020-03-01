@@ -1,11 +1,13 @@
 
 import React, {useState} from 'react';
-import { Typography, FormGroup, TextField } from '@material-ui/core';
+import { Typography, FormGroup, TextField, Button, ListItemText } from '@material-ui/core';
+import { getWords } from '../../api usage/WordRecomender'
 
 function WordChallengeForm () {
 
     const [currentNumber,setCurrentNumber] = useState(Math.floor(Math.random() * 999));
-    const [userResult, setUserResult] = useState('')
+    const [userResult, setUserResult] = useState('');
+    const [words, setWords] = useState(null);
     // value if the answer is correct
     const [isCorrect, setIsCorrect] = useState(false);
 
@@ -16,8 +18,8 @@ function WordChallengeForm () {
         3: '[m]',
         4: '[r]',
         5: '[l]',
-        6: '[gjscdz]',
-        7: '[kcgchq]',
+        6: '[g]',
+        7: '[k]',
         8: '[fv]',
         9: '[pb]',
         // 10 are the vouls and elements forgotten from the table
@@ -29,6 +31,7 @@ function WordChallengeForm () {
         
     }
     function submit(event) {
+        setWords(null)
         // regex form 
         let regex = RegExp(createRegex(currentNumber));
         let check = regex.test(userResult);
@@ -41,8 +44,8 @@ function WordChallengeForm () {
             setIsCorrect(true);
         }
         
-        console.table({'currentNumber': currentNumber, 'Regex Result': createRegex(currentNumber)});
-        console.log('is correct => ' ,regex.test(userResult));
+        // console.table({'currentNumber': currentNumber, 'Regex Result': createRegex(currentNumber)});
+        // console.log('is correct => ' ,regex.test(userResult));
         event.preventDefault();
     }
     // transform a number into a regular expression from the numbersTraduction table
@@ -72,6 +75,38 @@ function WordChallengeForm () {
         return result;
     }
 
+    // will fetch the words from the wordsAPI 
+    // TODO: make a way to store the fetches that a user has made from the api.
+    function recomendedWords(){
+        setWords(null);
+        fetch(`https://wordsapiv1.p.rapidapi.com/words/?letterPattern=^${createRegex(currentNumber)}$`, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+                "x-rapidapi-key": process.env.REACT_APP_WORDS_API_KEY
+            }
+        })
+        .then(response => {
+            return response.json()
+            
+        }).then( 
+            res => {
+                 setWords(res.results.data.map( (word,index) => {
+                    return (
+                        <ListItemText
+                        key = {index}
+                        primary={word}
+                        >
+                        </ListItemText>
+                    );
+                }));
+            }
+        )
+    }
+
+    // defines words
+
+
     return(
         <>
         <form onSubmit={submit}>
@@ -86,7 +121,11 @@ function WordChallengeForm () {
                 ></TextField>
             </FormGroup>
         </form>
-        
+        <Button variant="contained" color="secondary" onClick= {(e) => recomendedWords()}>
+            Get words
+        </Button>
+
+        {words}
 
         </>
     );
