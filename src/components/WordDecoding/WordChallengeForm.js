@@ -30,7 +30,6 @@ function WordChallengeForm () {
         
     }
     function submit(event) {
-        setWords(null)
         // regex form 
         let regex = RegExp(createRegex(currentNumber));
         let check = regex.test(userResult);
@@ -39,6 +38,7 @@ function WordChallengeForm () {
             setCurrentNumber(Math.floor(Math.random() * 999));
             setUserResult('');
             setIsCorrect(false)
+            setWords(null)
         }else{
             setIsCorrect(true);
         }
@@ -90,7 +90,6 @@ function WordChallengeForm () {
             
         }).then( 
             res => {
-                console.log(res)
                  setWords(res.results.data.map( (word,index) => {
                     return (
                         <ListItemText
@@ -103,9 +102,6 @@ function WordChallengeForm () {
             }
         )
     }
-
-    // defines words
-
 
     return(
         <>
