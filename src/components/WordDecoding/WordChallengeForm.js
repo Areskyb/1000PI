@@ -1,7 +1,6 @@
 
 import React, {useState} from 'react';
 import { Typography, FormGroup, TextField, Button, ListItemText } from '@material-ui/core';
-import { getWords } from '../../api usage/WordRecomender'
 
 function WordChallengeForm () {
 
@@ -79,7 +78,7 @@ function WordChallengeForm () {
     // TODO: make a way to store the fetches that a user has made from the api.
     function recomendedWords(){
         setWords(null);
-        fetch(`https://wordsapiv1.p.rapidapi.com/words/?letterPattern=^${createRegex(currentNumber)}$`, {
+        fetch(`https://wordsapiv1.p.rapidapi.com/words/?hasDetails=definitions&letterPattern=^${createRegex(currentNumber)}$`, {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
@@ -91,6 +90,7 @@ function WordChallengeForm () {
             
         }).then( 
             res => {
+                console.log(res)
                  setWords(res.results.data.map( (word,index) => {
                     return (
                         <ListItemText
