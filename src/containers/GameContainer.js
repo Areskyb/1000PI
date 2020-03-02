@@ -10,7 +10,7 @@ import Track from '../components/Track'
 import WordDecoding from '../components/WordDecoding/WordDecoding'
 import WordChallenge from '../components/WordChallenge/WordChallenge'
 import Decoding from '../components/Decoding/Decoding'
-import ThousandPi from '../components/ThousandPi'
+import ThousandPi from '../components/1000Pi/ThousandPi'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'

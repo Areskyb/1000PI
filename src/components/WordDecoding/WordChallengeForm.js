@@ -10,7 +10,7 @@ function WordChallengeForm () {
     // value if the answer is correct
     const [isCorrect, setIsCorrect] = useState(false);
 
-    const numbersTraducction = {
+    const numbersTraduction = {
         0: '[sz]',
         1: '[td]',
         2: '[n]',
@@ -59,15 +59,15 @@ function WordChallengeForm () {
         let result = '';
 
         for( let i = 0; i < lengthOfNum ; i++ ){
-           let correctExpression = numbersTraducction[parseInt(numInString[i])];
+           let correctExpression = numbersTraduction[parseInt(numInString[i])];
         //    console.log('correctExpresion =>',correctExpression)
            if(i === 0){
-               result = result.concat(numbersTraducction[10]);
+               result = result.concat(numbersTraduction[10]);
                result = result.concat(correctExpression);
-               result = result.concat(numbersTraducction[10]);
+               result = result.concat(numbersTraduction[10]);
            }else{
                result = result.concat(correctExpression);
-               result = result.concat(numbersTraducction[10]);
+               result = result.concat(numbersTraduction[10]);
            }
         }
 
