@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RelationForm from './RelationForm'
 import WordsProvider from './WordsProvider';
 import RelationsList from './RelationsList'
+import { Typography, Button, TextField } from '@material-ui/core';
 
 function Relationships({setGameTitle,setDialogContent}){
 
@@ -13,13 +14,22 @@ function Relationships({setGameTitle,setDialogContent}){
         setWordCount(0)
     }
 
+    const contentDialog = 
+    <>
+    <Typography variant = "h3"> Relationships</Typography>
+    <Typography variant = "p"> Here comes the description about relationships with looong tezt</Typography>
+    <Button> this is cool then</Button>
+    </>;
+
+
     useEffect(() => {
         setGameTitle("Relationships")
-        setDialogContent("Welcome to Relationships, in this exersice you have to write in the form a brief description from the two words given")
+        setDialogContent(contentDialog)
         return () => {
             
         };
-    }, [setGameTitle,setDialogContent])
+    }, [setGameTitle,setDialogContent]);
+
 
     if(!result){
 

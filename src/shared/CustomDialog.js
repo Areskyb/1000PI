@@ -39,9 +39,7 @@ export default function CustomDialog({dialogContent,gameTitle}) {
       >
         <DialogTitle id="alert-dialog-slide-title">{gameTitle}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
             {dialogContent}
-          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

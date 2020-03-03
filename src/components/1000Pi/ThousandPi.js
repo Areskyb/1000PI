@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import { getPI } from '../../api usage/WordRecomender';
 import { Typography,TextField, ListItemText } from '@material-ui/core';
+import PiRecomender from './PiRecomender';
 
 function ThousadPi({setGameTitle}){
     const pi = getPI();
@@ -11,7 +12,7 @@ function ThousadPi({setGameTitle}){
     const [currentNumbers, setCurrentNumbers] = useState(3141526535);
 
     // renders
-    const words = savedWords.map( (word,index) => <ListItemText primary = {word} key = {index}></ListItemText>)
+    const words = savedWords.map( (word,index) => <ListItemText primary = {` ${index + 1}. ${word}`} key = {index}></ListItemText>)
     // mounting
     useEffect(() => {
         setGameTitle('1000 Pi challenge');
@@ -124,6 +125,8 @@ function ThousadPi({setGameTitle}){
             fullWidth
             autoComplete = 'off' />
             </form>
+
+            <PiRecomender numbersToSearch={currentNumbers} setInput={setUserInput} sumbit={sumbit}></PiRecomender>
 
             {words}
 
