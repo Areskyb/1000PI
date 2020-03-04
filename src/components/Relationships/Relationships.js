@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RelationForm from './RelationForm'
 import WordsProvider from './WordsProvider';
 import RelationsList from './RelationsList'
-import { Typography, Button, TextField } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 
 function Relationships({setGameTitle,setDialogContent}){
 
@@ -25,9 +25,7 @@ function Relationships({setGameTitle,setDialogContent}){
     useEffect(() => {
         setGameTitle("Relationships")
         setDialogContent(contentDialog)
-        return () => {
-            
-        };
+        
     }, [setGameTitle,setDialogContent]);
 
 

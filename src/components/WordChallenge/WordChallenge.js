@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import { Button, Typography } from '@material-ui/core';
 import WordTest from './WordTest';
+import MindPalace from '../MindPalace/MindPalace'
 // import Words
 var nouns = require('nouns');
 function WordChallenge({setGameTitle,words}){
@@ -43,6 +44,7 @@ function WordChallenge({setGameTitle,words}){
         <Button onClick={e => prev(e)}>prev</Button>
         <Button onClick={e =>next(e)}>next</Button>
         <Typography variant="h3">Word Count: {count + 1}</Typography>
+        <MindPalace></MindPalace>
         </>
     )
 
