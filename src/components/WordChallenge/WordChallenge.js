@@ -1,14 +1,12 @@
 import React,{useEffect,useState} from 'react';
 import { Button, Typography } from '@material-ui/core';
 import WordTest from './WordTest';
-import MindPalace from '../MindPalace/MindPalace'
 // import Words
 var nouns = require('nouns');
 function WordChallenge({setGameTitle,words}){
    const wordList = useState(nouns.ran(words));
    const [count, setCount] = useState(0);
    const [inTest,setTest] = useState(false);
-
    useEffect(() => {
        setGameTitle("Word Challenge!")
        return () => {
@@ -29,6 +27,7 @@ function WordChallenge({setGameTitle,words}){
             }return
         
     }
+
     if(count === words){
         return(
             <>
@@ -37,17 +36,19 @@ function WordChallenge({setGameTitle,words}){
             </>
         )
     }
-
+    
     return(
         <>
         <Typography variant="h1">{wordList[0][count]}</Typography>
         <Button onClick={e => prev(e)}>prev</Button>
         <Button onClick={e =>next(e)}>next</Button>
         <Typography variant="h3">Word Count: {count + 1}</Typography>
-        <MindPalace></MindPalace>
+        {/* <MindPalace words ={ wordList }></MindPalace> */}
         </>
     )
 
 }
+
+
 
 export default WordChallenge;

@@ -17,7 +17,7 @@ function Relationships({setGameTitle,setDialogContent}){
     const contentDialog = 
     <>
     <Typography variant = "h3"> Relationships</Typography>
-    <Typography variant = "p"> Here comes the description about relationships with looong tezt</Typography>
+    <Typography variant = "h2"> Here comes the description about relationships with looong tezt</Typography>
     <Button> this is cool then</Button>
     </>;
 
@@ -26,7 +26,7 @@ function Relationships({setGameTitle,setDialogContent}){
         setGameTitle("Relationships")
         setDialogContent(contentDialog)
         
-    }, [setGameTitle,setDialogContent]);
+    },[]);
 
 
     if(!result){

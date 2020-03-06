@@ -19,7 +19,7 @@ const numbersTraduction = {
     8: '[fv]',
     9: '[pb]',
     // 10 are the vouls and elements forgotten from the table
-    10: '[aeiouwh]*'
+    10: '[aeiouwh\\s]*'
 }
 
 const createRegex = (num) => {

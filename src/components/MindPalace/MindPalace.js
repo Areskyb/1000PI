@@ -14,10 +14,9 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(4),
   },
 }));
-
 export default function MindPalace() {
   const classes = useStyles();
-
+  let words = ['hey','hoy'];
 
   return (
     <List
@@ -33,7 +32,7 @@ export default function MindPalace() {
     }
     className={classes.root}
   >
-    <Room></Room>
+    <Room words = {words}></Room>
     </List>
   );
 }

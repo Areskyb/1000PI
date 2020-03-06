@@ -22,7 +22,7 @@ function WordChallengeForm () {
         8: '[fv]',
         9: '[pb]',
         // 10 are the vouls and elements forgotten from the table
-        10: '[aeiouwh]*'
+        10: "[aeiouwh\\s]*"
     }
 
     function handleChange(event){
@@ -113,7 +113,7 @@ function WordChallengeForm () {
                 label='Set a word for this number' 
                 value ={userResult}
                 error= {isCorrect}
-                helperText={isCorrect ? 'Wrong Number!' : ''}
+                helperText={isCorrect ? 'Wrong!' : ''}
                 ></TextField>
             </FormGroup>
         </form>
