@@ -10,23 +10,23 @@ function Logged(){
     const [userName,setUserName] = useState(null);
     const [userPhotoURL,setUserPhotoURL] = useState(null);
 
-    let user = firebase.auth().currentUser;
-    
-    useEffect(() => {
-        setUserPhotoURL(user.photoURL)
-        setUserName(user.displayName)
-        return () => {
-            signOut()
-        };
-    }, [setUserPhotoURL,setUserPhotoURL])
-    
-    
-    
     // Signs-out of Friendly Chat.
     function signOut() {
         // Sign out of Firebase.
         firebase.auth().signOut();
     }
+    
+    useEffect(() => {
+        let user = firebase.auth().currentUser;
+        setUserPhotoURL(user.photoURL)
+        setUserName(user.displayName)
+        return () => {
+            signOut()
+        };
+    }, [setUserPhotoURL])
+     
+    
+    
     // user Value should be updated with the data retrived from the database.
     
     return(
