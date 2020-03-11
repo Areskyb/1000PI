@@ -2,7 +2,7 @@ import React,{useState,useEffect, useContext } from 'react';
 import Activity from './Activity'
 import * as firebase from 'firebase';
 import { UserContext } from '../UserContext';
-import { trackInfo, setTrack } from '../Services/firestoreServices';
+import { trackInfo } from '../Services/trackServices';
 
 // let query = tracksRef.where("id", "==",)
 

@@ -15,7 +15,7 @@ function Relationships({setGameTitle,setDialogContent}){
 
     useEffect(() => {
         setDialogContent(contentDialog);
-    },[setDialogContent]);
+    },[]);
     
     
     function resetGame(){

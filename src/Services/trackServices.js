@@ -1,5 +1,4 @@
 import * as firebase from 'firebase';
-import {UsbOutlined} from '@material-ui/icons'
 
 // the user get's only the data from the db, if there is no history with that account it will set it to the defaultTrack
     export  function trackInfo(uid) {

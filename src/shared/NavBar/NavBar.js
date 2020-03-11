@@ -58,7 +58,7 @@ const {userValue,setUserValue} = useContext(UserContext);
     return () => {
       unsubscirbe()
     }
-  },[unsubscirbe])    
+  },[unsubscirbe,authListener])    
   const classes = useStyles();
 
   return (

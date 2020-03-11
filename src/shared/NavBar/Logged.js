@@ -1,10 +1,9 @@
-import React,{useState,useEffect,useContext} from 'react';
+import React,{useState,useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 import ExitToApp from '@material-ui/icons/ExitToApp';
 import * as firebase from 'firebase'
 import { Button } from '@material-ui/core';
-import { UserContext } from '../../UserContext';
 
 
 function Logged(){
