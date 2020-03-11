@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect, useContext} from 'react';
 // material
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,6 +8,7 @@ import Logged from './Logged';
 import LogIn from './LogIn';
 import * as firebase from 'firebase';
 import 'typeface-roboto';
+import { UserContext } from '../../UserContext';
 
 // import MenuIcon from '@material-ui/icons/Menu';
 
@@ -29,25 +30,35 @@ const useStyles = makeStyles(theme => ({
 
 // A new way to define stateless Components? haha
 export default function NavBar() {
-
-
+const {userValue,setUserValue} = useContext(UserContext);
     // checks the log in status in firebase
    function authListener(){
         firebase.auth().onAuthStateChanged((user)=>{
           if (user){
-            return setLogStatus(true)
+            if (userValue == null){
+              setUserValue(user.uid);
+            }
+            return setLogStatus(true); 
+
           }else{
             return setLogStatus(false)
           }
         })
     }
 
+    const unsubscirbe = firebase.auth().onAuthStateChanged( user => {
+      if(user){}
+    })
+
 
   const [logStatus,setLogStatus] = useState(false);  
 
   useEffect(()=> {
     authListener()
-  },[])    
+    return () => {
+      unsubscirbe()
+    }
+  },[unsubscirbe])    
   const classes = useStyles();
 
   return (

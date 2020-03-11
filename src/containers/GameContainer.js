@@ -20,7 +20,6 @@ import Toolbar from '@material-ui/core/Toolbar'
 
 function GameConatainer(){
    
-   
 //  STYLES  
     const useStyles = makeStyles(theme => ({
         root: {
@@ -65,7 +64,6 @@ function GameConatainer(){
       <Router>
 
       <Switch>
-
           <Route exact path="/" >
             <Track setGameTitle={setGameTitle}></Track>
           </Route>
@@ -93,8 +91,6 @@ function GameConatainer(){
           <Route exact path="/1000 PI">
             <ThousandPi setGameTitle={setGameTitle}></ThousandPi>
           </Route>
-          
-
       </Switch>
       </Router>
       </Container>

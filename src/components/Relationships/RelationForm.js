@@ -32,7 +32,7 @@ function RelationForm({setResult,setWordCount,wordCount}){
     }
 
     const finishTask = event => {
-        setResult(descriptions)
+        setResult(descriptions);
     }
 
     return(
