@@ -5,7 +5,8 @@ export const getRelationships = (uid) => {
     let query = relationsRef.doc(uid).get()
     .then(doc => {
         if (!doc.exists) {
-            console.log("doc don't exist here you should create a new one and save it ")
+          setDefaultRelationships(uid)
+          return {relations:0}
         } else {
           return doc.data();
         }
@@ -15,4 +16,19 @@ export const getRelationships = (uid) => {
       });
 
         return query 
+}
+
+export const setDefaultRelationships = (uid) => {
+  let relationsRef = firebase.firestore().collection('relationships');
+  let defaultRelations = {
+    relations: 0
+  }
+    relationsRef.doc(uid).set(defaultRelations);
+}
+
+export const updateRelations = (uid, num ) => {
+  let relationsRef = firebase.firestore().collection('relationships');
+
+  let query = relationsRef.doc(uid).update({relations: num})
+    return query;
 }

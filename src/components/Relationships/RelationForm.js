@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import { updateRelations } from '../../Services/relationshipsServices';
+import {UserContext} from '../../UserContext'
 
 
 
-function RelationForm({setResult,setWordCount,wordCount}){
+function RelationForm({setResult,setWordCount,wordCount,totalRelations}){
 
     const [description,setDescription] = useState('');
     const [descriptions,setDescriptions] = useState([]);
-
+    const { userValue } = useContext(UserContext);
     // will handle change in each event 
     const handleChange = event => {
         setDescription(event.target.value)
@@ -33,6 +35,9 @@ function RelationForm({setResult,setWordCount,wordCount}){
 
     const finishTask = event => {
         setResult(descriptions);
+        updateRelations(userValue,(wordCount + totalRelations))
+        console.log('db write update relations', (wordCount + totalRelations))
+
     }
 
     return(

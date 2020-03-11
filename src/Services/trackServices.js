@@ -17,7 +17,9 @@ export function trackInfo(uid) {
     .get()
     .then(doc => {
       if (!doc.exists) {
+        setTrack(defaultTrack,uid);
         return defaultTrack;
+        
       } else {
         return doc.data();
       }
