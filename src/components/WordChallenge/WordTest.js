@@ -1,31 +1,34 @@
-import React,{useState} from 'react'
-import { Button, ListItem, Typography } from '@material-ui/core'
-
-function WordTest({wordList,setTest}){
-    // check if the test is being made 
+import React,{ useState, useContext } from 'react'
+import { Button, ListItem, Typography } from '@material-ui/core';
+import { UserContext } from '../../UserContext'
+import { updateWordChallenges } from '../../Services/wordChallengeServices'
+function WordTest({wordList,setTest,totalWords,setTotalWords}){
+    // check if the test is being made
     const [inTest, setInTest] = useState(false);
     // toggle if won
     const [isWon,setIsWon] = useState(false);
     // track the count of the exam
     const [count,setCount] = useState(0);
+    const [totalWon,setTotalWon] = useState(false);
+    const { userValue } = useContext(UserContext);
 
     // creates a set of random words excluding the correct one
         function getrandomWords(num){
             let result = []
 
             for(let i = 0; i < num; i++){
-                let randomWord = wordList[0][Math.floor(Math.random() * wordList[0].length)]
+                let randomWord = wordList[Math.floor(Math.random() * wordList.length)]
                 //will check if the word is already in the result arry
                 // console.log("result=>",result, " random word =>", randomWord, "includes? =>",result.includes(randomWord))
                 if(!result.includes(randomWord) && randomWord !== correctWord ){
-                    result.push(randomWord); 
+                    result.push(randomWord);
                 }else{
                     i--
                 }
-                
+
             }
             let finalResult = result.map((word,index) => {
-                
+
                 if(word !== undefined){
                     return(
                         <ListItem key={index}  button onClick={e => console.log("incorrect")}> {word} </ListItem>
@@ -38,31 +41,31 @@ function WordTest({wordList,setTest}){
         }
 
 
-    // creates the correct button appart 
+    // creates the correct button appart
     function correctOtion(){
         return(
-            <ListItem key={Date.now()}  button onClick={e => nextQuestion()}> {wordList[0][count]} </ListItem>
+            <ListItem key={Date.now()}  button onClick={e => nextQuestion()}> {wordList[count]} </ListItem>
         )
     }
 
-    let correctWord = wordList[0][count];
+    let correctWord = wordList[count];
     let options = getrandomWords(4);
     let correctOption = correctOtion();
 
     options.splice(Math.floor(Math.random() * 5),0,correctOption);
-    console.log("correctWord", wordList[0][count]);
+    console.log("correctWord", wordList[count]);
 
     function nextQuestion(){
-        if (wordList[0][count + 1] === undefined){
-            setInTest(false);
+        if (wordList[count + 1] === undefined){
+            setTest(false);
             setIsWon(true);
         }else{
             setCount(count + 1);
         }
     }
 
-    
-        
+
+
         if(inTest && !isWon){
             return(
                 <>
@@ -76,6 +79,11 @@ function WordTest({wordList,setTest}){
                 <Button onClick={e => {setInTest(true);setTest(true)}}>Make Test</Button>
             )
         }else{
+              let numOfWords = wordList.length
+              console.log(totalWords);
+              console.log(numOfWords)
+              updateWordChallenges(userValue, {[numOfWords]:(totalWords + 1)});
+              console.log('db write');
             return(
                 <Typography variant ="h1">You won!</Typography>
             )

@@ -28,7 +28,7 @@ function Relationships({ setGameTitle, setDialogContent }) {
     const contentDialog = (
       <>
         <Typography variant="h3"> Relationships</Typography>
-        <Typography variant="subtitle 1"> klfda;lksdfjadsl;kf asd;kfj dsa;lkfj asd;lfkjdsa lf;kadjs fl;kjs dflkdasjf lsadkjfa kfjj sld fsljf slkfja l;skj </Typography>
+        <Typography variant="subtitle1"> klfda;lksdfjadsl;kf asd;kfj dsa;lkfj asd;lfkjdsa lf;kadjs fl;kjs dflkdasjf lsadkjfa kfjj sld fsljf slkfja l;skj </Typography>
         <Button> this is cool then</Button>
       </>
     );
