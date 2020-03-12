@@ -9,7 +9,7 @@ function WordTest({wordList,setTest,totalWords,setTotalWords}){
     const [isWon,setIsWon] = useState(false);
     // track the count of the exam
     const [count,setCount] = useState(0);
-    const [totalWon,setTotalWon] = useState(false);
+    
     const { userValue } = useContext(UserContext);
 
     // creates a set of random words excluding the correct one

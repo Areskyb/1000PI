@@ -1,4 +1,5 @@
-import * as firebase from "firebase";
+import firebase from 'firebase/app';
+import 'firebase/firestore'
 
 // the user get's only the data from the db, if there is no history with that account it will set it to the defaultTrack
 export function trackInfo(uid) {

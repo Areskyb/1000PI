@@ -53,10 +53,10 @@ function WordChallenge({setGameTitle,words}){
     }
 
 
-    const refreshWords = () => {
-      setCount(0);
-      setWords(nouns.ran(words));
-    }
+    // const refreshWords = () => {
+    //   setCount(0);
+    //   setWords(nouns.ran(words));
+    // }
 
     if(count === words){
         return(

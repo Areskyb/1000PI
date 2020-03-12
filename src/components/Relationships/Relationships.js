@@ -1,12 +1,13 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext,useRef } from "react";
 import RelationForm from "./RelationForm";
 import WordsProvider from "./WordsProvider";
 import RelationsList from "./RelationsList";
-import * as firebase from "firebase";
+import firebase from 'firebase/app';
 import { Typography, Button } from "@material-ui/core";
 import { UserContext } from "../../UserContext";
-import { getRelationships, updateRelations } from '../../Services/relationshipsServices';
-import { updateTrack } from '../../Services/trackServices';
+import {
+  getRelationships,
+} from "../../Services/relationshipsServices";
 
 function Relationships({ setGameTitle, setDialogContent }) {
   // user Context for getting data
@@ -14,55 +15,51 @@ function Relationships({ setGameTitle, setDialogContent }) {
   const { userValue } = useContext(UserContext);
   const [result, setResult] = useState(null);
   const [wordCount, setWordCount] = useState(0);
-  const [totalRelations, setTotalRelations] = useState(null);
+  const totalRelations = useRef(null);
 
-//   USE EFFECTS
-// Title
+  //   USE EFFECTS
+  // Title
   useEffect(() => {
-    console.log('load relations')
+    console.log("load relations");
     setGameTitle("Relationships");
   }, [setGameTitle]);
-// Dialog content
-  useEffect(() => {  
+  // Dialog content
+  useEffect(() => {
     // info for the level
     const contentDialog = (
       <>
         <Typography variant="h3"> Relationships</Typography>
-        <Typography variant="subtitle1"> klfda;lksdfjadsl;kf asd;kfj dsa;lkfj asd;lfkjdsa lf;kadjs fl;kjs dflkdasjf lsadkjfa kfjj sld fsljf slkfja l;skj </Typography>
+        <Typography variant="subtitle1">
+          {" "}
+          klfda;lksdfjadsl;kf asd;kfj dsa;lkfj asd;lfkjdsa lf;kadjs fl;kjs
+          dflkdasjf lsadkjfa kfjj sld fsljf slkfja l;skj{" "}
+        </Typography>
         <Button> this is cool then</Button>
       </>
     );
     setDialogContent(contentDialog);
   }, [setDialogContent]);
-// db conection
+  
+  // db conection
   useEffect(() => {
-            if(userValue && !totalRelations){
-              console.log('db read')
-              getRelationships(userValue).then(res => setTotalRelations(res.relations))
-            } 
+    if (userValue) {
+      getRelationships(userValue).then(res => totalRelations.current = res.relations);
+      console.log("db read");
+    }
     return () => {
       firebase.auth().onAuthStateChanged(user => {
-        if(user) {
+        if (user) {
         }
-      })
+      });
     };
-  }, [setTotalRelations,userValue])
-// check if the user pass the level
-  useEffect(() => {
-    if(wordCount + totalRelations === 5){
-      updateRelations(userValue,(wordCount + totalRelations));
-      updateTrack({activityTwo:true},userValue);
-      console.log('db write updateTrack')
-    }
-  },[wordCount,totalRelations])
+  }, [userValue]);
+  // check if the user pass the level
+  
+
   function resetGame() {
     setResult(null);
     setWordCount(0);
-    setTotalRelations(totalRelations + wordCount);
-    
   }
-  
-  
 
   if (!result) {
     return (

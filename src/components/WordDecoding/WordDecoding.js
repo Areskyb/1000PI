@@ -1,7 +1,7 @@
 import React,{useEffect, useRef, useContext} from 'react';
 import WordChallengeForm from './WordChallengeForm';
 import { UserContext } from '../../UserContext'
-import { getWordDecoding, setWordDecoding, updateWordDecoding} from '../../Services/wordDecodingServices';
+import { getWordDecoding, updateWordDecoding} from '../../Services/wordDecodingServices';
 
 function WordDecoding({setGameTitle}){
     const times = useRef(null);

@@ -6,7 +6,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Logged from "./Logged";
 import LogIn from "./LogIn";
-import * as firebase from "firebase";
+import firebase from '@firebase/app';
+import '@firebase/auth';
 import "typeface-roboto";
 import { UserContext } from "../../UserContext";
 

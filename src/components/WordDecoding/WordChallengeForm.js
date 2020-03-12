@@ -1,5 +1,5 @@
 
-import React, {useState,useEffect} from 'react';
+import React, { useState } from 'react';
 import { Typography, FormGroup, TextField, Button, ListItemText } from '@material-ui/core';
 import { updateTrack } from '../../Services/trackServices';
 
@@ -109,6 +109,7 @@ function WordChallengeForm ({times,save,user}) {
 
     // check if the user has passed the level
     if(times.current === 10){
+
         alert('new level unlocked!');
         updateTrack({activityFive:true,activitySix:true},user);
         times.current = times.current + 1;

@@ -1,7 +1,7 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 
 export const getWordDecoding = (uid, key) => {
-    let ref = firebase. firestore().collection('wordDecodings');
+    let ref = firebase.firestore().collection('wordDecodings');
     let query = ref.doc(uid).get()
     .then(doc => {
         if (!doc.exists) {

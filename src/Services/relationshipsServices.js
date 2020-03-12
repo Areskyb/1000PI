@@ -1,5 +1,4 @@
-import * as firebase from 'firebase';
-
+import firebase from 'firebase/app';
 export const getRelationships = (uid) => {
     let relationsRef = firebase.firestore().collection('relationships');
     let query = relationsRef.doc(uid).get()
@@ -26,9 +25,9 @@ export const setDefaultRelationships = (uid) => {
     relationsRef.doc(uid).set(defaultRelations);
 }
 
-export const updateRelations = (uid, num ) => {
+export const updateRelations = (uid,key, num ) => {
   let relationsRef = firebase.firestore().collection('relationships');
 
-  let query = relationsRef.doc(uid).update({relations: num})
+  let query = relationsRef.doc(uid).update({[key]: num})
     return query;
 }

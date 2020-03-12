@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Activity from "./Activity";
-import * as firebase from "firebase";
+import firebase from 'firebase/app';
 import { UserContext } from "../UserContext";
 import { trackInfo } from "../Services/trackServices";
 
@@ -8,7 +8,7 @@ import { trackInfo } from "../Services/trackServices";
 
 // Track component loads the activities from the user
 function Track({ setGameTitle }) {
-  const { userValue } = useContext(UserContext);
+  const { userValue,setUserValue } = useContext(UserContext);
 
   let defaultValues = {
     activityOne: true,
@@ -27,7 +27,7 @@ function Track({ setGameTitle }) {
       if (user) {
         trackInfo(user.uid).then(res => setTrackState(res));
       } else {
-        console.log("noUser");
+        setUserValue(null);
       }
     });
 
@@ -37,7 +37,7 @@ function Track({ setGameTitle }) {
         }
       });
     };
-  }, [setGameTitle]);
+  }, [setGameTitle,setUserValue]);
 
   // if the user has a state, then load the state of the track, if not set a default one.
   if (userValue !== null) {
