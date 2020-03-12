@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
-import { Input, Typography } from '@material-ui/core';
+import React, { useState, useEffect } from "react";
+import { Input, Typography, Button } from "@material-ui/core";
+import { updateDecoding } from "../../Services/decodingServices";
+import {updateTrack} from '../../Services/trackServices'
 
-const nouns = require('nouns');
+const nouns = require("nouns");
 // const associationTable = {
 //     'z': "0",
 //     's': "0",
@@ -28,36 +30,55 @@ const nouns = require('nouns');
 //     'p': "9"
 // }
 
+function WordForm({ times, user }) {
+  const [currentWord, setCurrentWord] = useState(nouns.ran(1));
+  const [userResult, setUserResult] = useState("");
 
-function WordForm () {
 
-    const [currentWord,setCurrentWord] = useState(nouns.ran(1));
-    const [userResult, setUserResult] = useState('');
-    
-    function checkResult(event){
-        console.table([{'Word to check': currentWord[0], 'Decode result': decode(userResult), 'User result': userResult}]);
-        // console.log(typeof userResult);
-        setCurrentWord(nouns.ran(1));
-        setUserResult('')
-        event.preventDefault();
-    }
 
-    // should return the decoding of the word
-    function decode (word) {
-        
-    }
+  function checkResult(event) {
+    console.log("times", times.current);
+    times.current = times.current + 1;
+    // console.table([{'Word to check': currentWord[0], 'Decode result': decode(userResult), 'User result': userResult}]);
+    // console.log(typeof userResult);
+    setCurrentWord(nouns.ran(1));
+    setUserResult("");
+    event.preventDefault();
+  }
 
-    function handleChange (event) {
-        setUserResult(event.target.value);
-    }
+  // should return the decoding of the word
+  // function decode (word) {
 
-    return(
-        <form onSubmit={checkResult}>
-            <Typography variant="h1">{currentWord}</Typography>
-            <Input type='number'  value ={userResult} onChange={handleChange}></Input>
-        </form>
-    );
-        
+  // }
+
+  function handleChange(event) {
+    setUserResult(event.target.value);
+  }
+  const save = () => {
+      updateDecoding(user,'times',times.current);
+      console.log('db write');
+  }
+
+  if(times.current === 30){
+      alert('New level unlocked!');
+      times.current = times.current + 1;
+      save();
+      updateTrack({activityFour:true},user);
+  }
+
+
+  return (
+    <form onSubmit={checkResult}>
+      <Typography variant="h1">{currentWord}</Typography>
+      <Input
+        type="number"
+        value={userResult}
+        onChange={handleChange}
+        required
+      ></Input>
+      <Button onClick={e => save()}>Save</Button>
+    </form>
+  );
 }
 
 export default WordForm;

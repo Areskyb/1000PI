@@ -1,14 +1,17 @@
 
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Typography, FormGroup, TextField, Button, ListItemText } from '@material-ui/core';
+import { updateTrack } from '../../Services/trackServices';
 
-function WordChallengeForm () {
+function WordChallengeForm ({times,save,user}) {
 
     const [currentNumber,setCurrentNumber] = useState(Math.floor(Math.random() * 999));
     const [userResult, setUserResult] = useState('');
     const [words, setWords] = useState(null);
     // value if the answer is correct
     const [isCorrect, setIsCorrect] = useState(false);
+
+   
 
     const numbersTraduction = {
         0: '[sz]',
@@ -38,7 +41,9 @@ function WordChallengeForm () {
             setCurrentNumber(Math.floor(Math.random() * 999));
             setUserResult('');
             setIsCorrect(false)
-            setWords(null)
+            setWords(null);
+            times.current = times.current + 1;
+            console.log('times',times.current);
         }else{
             setIsCorrect(true);
         }
@@ -73,7 +78,6 @@ function WordChallengeForm () {
 
         return result;
     }
-
     // will fetch the words from the wordsAPI 
     // TODO: make a way to store the fetches that a user has made from the api.
     function recomendedWords(){
@@ -103,6 +107,14 @@ function WordChallengeForm () {
         )
     }
 
+    // check if the user has passed the level
+    if(times.current === 10){
+        alert('new level unlocked!');
+        updateTrack({activityFive:true,activitySix:true},user);
+        times.current = times.current + 1;
+        save()
+    }
+
     return(
         <>
         <form onSubmit={submit}>
@@ -117,9 +129,13 @@ function WordChallengeForm () {
                 ></TextField>
             </FormGroup>
         </form>
-        <Button variant="contained" color="secondary" onClick= {(e) => recomendedWords()}>
-            Get words
+        <Button variant="contained" color="primary" onClick= {(e) => recomendedWords()}>
+            Get words that match
         </Button>
+        <Button variant="contained" color="secondary" onClick= {(e) => save()}>
+            Save
+        </Button>
+        
 
         {words}
 

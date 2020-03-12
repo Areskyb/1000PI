@@ -54,20 +54,20 @@ function Track({ setGameTitle }) {
           isAchived={trackState.activityTwo}
         ></Activity>
         <Activity
-          activityName="100 Words Challenge"
+          activityName="Words to numbers"
           acitvityNumber="3"
           isAchived={trackState.activityThree}
         ></Activity>
         <Activity
-          activityName="Words to numbers"
+          activityName="Numbers to words"
           acitvityNumber="4"
           isAchived={trackState.activityFour}
         ></Activity>
-        <Activity
-          activityName="Numbers to words"
-          acitvityNumber="5"
-          isAchived={trackState.activityFive}
-        ></Activity>
+          <Activity
+            activityName="100 Words Challenge"
+            acitvityNumber="5"
+            isAchived={trackState.activityFive}
+          ></Activity>
         <Activity
           activityName="1000 PI"
           acitvityNumber="6"
