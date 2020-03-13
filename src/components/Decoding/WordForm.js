@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Input, Typography, Button } from "@material-ui/core";
 import { updateDecoding } from "../../Services/decodingServices";
 import {updateTrack} from '../../Services/trackServices'
-
-const nouns = require("nouns");
+import {ran } from '../../shared/nounsGetter'
 // const associationTable = {
 //     'z': "0",
 //     's': "0",
@@ -30,8 +29,8 @@ const nouns = require("nouns");
 //     'p': "9"
 // }
 
-function WordForm({ times, user }) {
-  const [currentWord, setCurrentWord] = useState(nouns.ran(1));
+function WordForm({ times, user, setProgressBar }) {
+  const [currentWord, setCurrentWord] = useState(ran(1));
   const [userResult, setUserResult] = useState("");
 
 
@@ -41,9 +40,14 @@ function WordForm({ times, user }) {
     times.current = times.current + 1;
     // console.table([{'Word to check': currentWord[0], 'Decode result': decode(userResult), 'User result': userResult}]);
     // console.log(typeof userResult);
-    setCurrentWord(nouns.ran(1));
+    setCurrentWord(ran(1));
     setUserResult("");
     event.preventDefault();
+    if(times.current <= 40){
+      setProgressBar((times.current * 100)/40);
+  }else{
+      setProgressBar(100);
+  }
   }
 
   // should return the decoding of the word
@@ -56,10 +60,11 @@ function WordForm({ times, user }) {
   }
   const save = () => {
       updateDecoding(user,'times',times.current);
+
       console.log('db write');
   }
 
-  if(times.current === 30){
+  if(times.current === 40){
       alert('New level unlocked!');
       times.current = times.current + 1;
       save();

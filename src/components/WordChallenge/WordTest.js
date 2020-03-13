@@ -2,7 +2,7 @@ import React,{ useState, useContext } from 'react'
 import { Button, ListItem, Typography } from '@material-ui/core';
 import { UserContext } from '../../UserContext'
 import { updateWordChallenges } from '../../Services/wordChallengeServices'
-function WordTest({wordList,setTest,totalWords,setTotalWords}){
+function WordTest({wordList,setTest,totalWords,setTotalWords,setProgressBar}){
     // check if the test is being made
     const [inTest, setInTest] = useState(false);
     // toggle if won
@@ -84,6 +84,12 @@ function WordTest({wordList,setTest,totalWords,setTotalWords}){
               console.log(numOfWords)
               updateWordChallenges(userValue, {[numOfWords]:(totalWords + 1)});
               console.log('db write');
+              if(totalWords + 1 <= 10){ 
+                  setProgressBar((totalWords * 100)/10)
+                }else{
+                    setProgressBar(100)
+                }
+
             return(
                 <Typography variant ="h1">You won!</Typography>
             )

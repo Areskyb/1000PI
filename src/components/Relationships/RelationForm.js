@@ -7,7 +7,7 @@ import {UserContext} from '../../UserContext'
 
 
 
-function RelationForm({setResult,setWordCount,wordCount,totalRelations}){
+function RelationForm({setResult,setWordCount,wordCount,totalRelations,setProgressBar}){
 
     const [description,setDescription] = useState('');
     const [descriptions,setDescriptions] = useState([]);
@@ -30,6 +30,10 @@ function RelationForm({setResult,setWordCount,wordCount,totalRelations}){
             setDescriptions([...descriptions,description]);
             setWordCount(wordCount + 1);
             totalRelations.current = totalRelations.current + 1;
+            if(totalRelations.current <= 30){
+                setProgressBar((totalRelations.current * 100)/30);
+            }
+            
         }
         setDescription('');
         event.preventDefault();

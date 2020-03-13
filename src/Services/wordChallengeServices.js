@@ -27,7 +27,7 @@ export const setDefaultWordChallenges = uid => {
     .collection("wordChallenges")
     .doc(uid)
     .set({
-      5: 0,
+      10: 0,
       100: 0
     });
   return query;

@@ -5,14 +5,21 @@ import { getDecoding } from '../../Services/decodingServices'
 import { UserContext } from '../../UserContext';
 
 
-function Decoding({setGameTitle}){
+function Decoding({setGameTitle,setProgressBar}){
     const {userValue} = useContext(UserContext);
     const times = useRef(0);
 
 
     useEffect(() => {
         if(userValue){
-            getDecoding(userValue,'times').then(res => times.current = res);
+            getDecoding(userValue,'times').then(res => {
+                times.current = res
+                if(res <= 40){
+                    setProgressBar((res * 100)/40);
+                }else{
+                    setProgressBar(100);
+                }
+            });
             console.log('read db ')
         }
         return () => {
@@ -30,7 +37,7 @@ function Decoding({setGameTitle}){
     }, [setGameTitle])
     return(
         <>
-        <WordForm times={times} user={userValue}></WordForm>
+        <WordForm times={times} user={userValue} setProgressBar={setProgressBar}></WordForm>
         <CheatSheet></CheatSheet>
         </>
     )

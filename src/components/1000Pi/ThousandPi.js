@@ -3,7 +3,7 @@ import { getPI } from '../../api usage/WordRecomender';
 import { Typography,TextField, ListItemText } from '@material-ui/core';
 import PiRecomender from './PiRecomender';
 
-function ThousadPi({setGameTitle}){
+function ThousadPi({setGameTitle,setProgressBar}){
     const pi = getPI();
     // STATES
     const [userInput,setUserInput] = useState('');
@@ -104,6 +104,12 @@ function ThousadPi({setGameTitle}){
             setSavedWords([...savedWords,userInput]);
             setTotalNumbers( totalNumbers + getCharacters(userInput).length);
             setCurrentNumbers(newCurrentNumbers());
+
+            if(totalNumbers <= 1000){
+                setProgressBar((totalNumbers * 100)/1000);
+            }else{
+                setProgressBar(100);
+            }
         }   
         // set the input of the user into the user word list
         setUserInput('');

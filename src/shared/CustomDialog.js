@@ -11,8 +11,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function CustomDialog({dialogContent,gameTitle}) {
+export default function CustomDialog({dialogContent}) {
   const [open, setOpen] = React.useState(false);
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -25,7 +26,9 @@ export default function CustomDialog({dialogContent,gameTitle}) {
   return (
     <div>
       <IconButton onClick={handleClickOpen}>
-      <InfoOutlinedIcon></InfoOutlinedIcon>
+        Need 
+         <InfoOutlinedIcon></InfoOutlinedIcon>
+        ? 
       </IconButton>
       <Dialog
         open={open}

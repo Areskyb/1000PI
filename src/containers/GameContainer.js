@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Route,
   BrowserRouter as Router,
@@ -16,7 +16,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-
+import LinearProgress from '@material-ui/core/LinearProgress'
 
 function GameConatainer(){
    
@@ -31,6 +31,12 @@ function GameConatainer(){
         title: {
           flexGrow: 1,
         },
+
+        progressBar: {
+          flexGrow: 3,
+          marginRight: '10%',
+          height: 15,
+        }
       }));
     const classes = useStyles()      
    const  style= {
@@ -47,6 +53,7 @@ function GameConatainer(){
 
     const [gameTitle,setGameTitle] = useState("Your track")
     const [dialogContent,setDialogContent] = useState("");
+    const [progressBar, setProgressBar] = useState(null);
 
 
 
@@ -57,7 +64,8 @@ function GameConatainer(){
           <Typography variant="h6" className={classes.title}>
             {gameTitle}
           </Typography>
-              <CustomDialog dialogContent={dialogContent} gameTitle={gameTitle}></CustomDialog>
+             {progressBar !== 100?<LinearProgress variant="determinate" value={progressBar} color="secondary" className={classes.progressBar} />:<Typography></Typography> }
+             <CustomDialog dialogContent={dialogContent} gameTitle={gameTitle}></CustomDialog>
         </Toolbar>
       </AppBar>
 
@@ -65,31 +73,31 @@ function GameConatainer(){
 
       <Switch>
           <Route exact path="/" >
-            <Track setGameTitle={setGameTitle}></Track>
+            <Track setGameTitle={setGameTitle} setProgressBar={setProgressBar}></Track>
           </Route>
 
           <Route exact path="/Relationships">
-            <Relationships setGameTitle={setGameTitle} setDialogContent={setDialogContent} ></Relationships>
+            <Relationships setGameTitle={setGameTitle} setProgressBar={setProgressBar} setDialogContent={setDialogContent} ></Relationships>
           </Route>
 
-          <Route exact path="/20 Words Challenge">
-            <WordChallenge words={5} setGameTitle={setGameTitle}></WordChallenge>
+          <Route exact path="/10 Words Challenge">
+            <WordChallenge words={10} setGameTitle={setGameTitle} setProgressBar={setProgressBar}></WordChallenge>
           </Route>
           
           <Route exact path="/100 Words Challenge">
-            <WordChallenge words={100} setGameTitle={setGameTitle}></WordChallenge>
+            <WordChallenge words={100} setGameTitle={setGameTitle} setProgressBar={setProgressBar}></WordChallenge>
           </Route>
 
           <Route exact path="/Words to numbers">
-            <Decoding setGameTitle={setGameTitle}></Decoding>
+            <Decoding setGameTitle={setGameTitle} setProgressBar={setProgressBar}></Decoding>
           </Route>
 
           <Route exact path="/Numbers to Words">
-            <WordDecoding setGameTitle={setGameTitle}></WordDecoding>
+            <WordDecoding setGameTitle={setGameTitle} setProgressBar={setProgressBar}></WordDecoding>
           </Route>
 
           <Route exact path="/1000 PI">
-            <ThousandPi setGameTitle={setGameTitle}></ThousandPi>
+            <ThousandPi setGameTitle={setGameTitle} setProgressBar={setProgressBar}></ThousandPi>
           </Route>
       </Switch>
       </Router>

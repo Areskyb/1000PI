@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Typography, FormGroup, TextField, Button, ListItemText } from '@material-ui/core';
 import { updateTrack } from '../../Services/trackServices';
 
-function WordChallengeForm ({times,save,user}) {
+function WordChallengeForm ({times,save,user,setProgressBar}) {
 
     const [currentNumber,setCurrentNumber] = useState(Math.floor(Math.random() * 999));
     const [userResult, setUserResult] = useState('');
@@ -43,7 +43,14 @@ function WordChallengeForm ({times,save,user}) {
             setIsCorrect(false)
             setWords(null);
             times.current = times.current + 1;
-            console.log('times',times.current);
+            // console.log('times',times.current);
+
+            if(times.current <= 40){
+                setProgressBar((times.current * 100)/40);
+            }else{
+                setProgressBar(100);
+            }
+
         }else{
             setIsCorrect(true);
         }
@@ -108,7 +115,7 @@ function WordChallengeForm ({times,save,user}) {
     }
 
     // check if the user has passed the level
-    if(times.current === 10){
+    if(times.current === 40){
 
         alert('new level unlocked!');
         updateTrack({activityFive:true,activitySix:true},user);

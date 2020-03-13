@@ -4,10 +4,11 @@ import firebase from 'firebase/app';
 import { UserContext } from "../UserContext";
 import { trackInfo } from "../Services/trackServices";
 
+
 // let query = tracksRef.where("id", "==",)
 
 // Track component loads the activities from the user
-function Track({ setGameTitle }) {
+function Track({ setGameTitle, setProgressBar }) {
   const { userValue,setUserValue } = useContext(UserContext);
 
   let defaultValues = {
@@ -25,7 +26,17 @@ function Track({ setGameTitle }) {
     setGameTitle("Your Track");
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        trackInfo(user.uid).then(res => setTrackState(res));
+        trackInfo(user.uid).then(res => {
+          setTrackState(res);
+          let total = 0;
+          for (const activity in res){
+              if (res[activity] === true){total++}
+          }
+          setProgressBar(Math.floor((100 * total)/6));
+
+
+
+        });
       } else {
         setUserValue(null);
       }
@@ -39,6 +50,7 @@ function Track({ setGameTitle }) {
     };
   }, [setGameTitle,setUserValue]);
 
+
   // if the user has a state, then load the state of the track, if not set a default one.
   if (userValue !== null) {
     return (
@@ -49,7 +61,7 @@ function Track({ setGameTitle }) {
           isAchived={trackState.activityOne}
         ></Activity>
         <Activity
-          activityName="20 Words Challenge"
+          activityName="10 Words Challenge"
           acitvityNumber="2"
           isAchived={trackState.activityTwo}
         ></Activity>

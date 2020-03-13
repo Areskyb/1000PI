@@ -9,7 +9,7 @@ import {
   getRelationships,
 } from "../../Services/relationshipsServices";
 
-function Relationships({ setGameTitle, setDialogContent }) {
+function Relationships({ setGameTitle, setDialogContent,setProgressBar }) {
   // user Context for getting data
 
   const { userValue } = useContext(UserContext);
@@ -43,7 +43,16 @@ function Relationships({ setGameTitle, setDialogContent }) {
   // db conection
   useEffect(() => {
     if (userValue) {
-      getRelationships(userValue).then(res => totalRelations.current = res.relations);
+      getRelationships(userValue).then(res => {
+        totalRelations.current = res.relations;
+        console.log(res.relations)
+        if(res.relations < 30){
+          setProgressBar((res.relations * 100)/30);
+        }else{
+          setProgressBar(100)
+        }
+
+      });
       console.log("db read");
     }
     return () => {
@@ -64,12 +73,14 @@ function Relationships({ setGameTitle, setDialogContent }) {
   if (!result) {
     return (
       <>
+
         <WordsProvider wordCount={wordCount}></WordsProvider>
         <RelationForm
           setResult={setResult}
           setWordCount={setWordCount}
           wordCount={wordCount}
           totalRelations={totalRelations}
+          setProgressBar={setProgressBar}
         ></RelationForm>
       </>
     );
