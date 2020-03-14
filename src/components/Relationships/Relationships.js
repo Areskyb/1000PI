@@ -9,6 +9,7 @@ import {
   getRelationships,
 } from "../../Services/relationshipsServices";
 
+
 function Relationships({ setGameTitle, setDialogContent,setProgressBar }) {
   // user Context for getting data
 
@@ -20,7 +21,7 @@ function Relationships({ setGameTitle, setDialogContent,setProgressBar }) {
   //   USE EFFECTS
   // Title
   useEffect(() => {
-    console.log("load relations");
+    // console.log("load relations");
     setGameTitle("Relationships");
   }, [setGameTitle]);
   // Dialog content
@@ -29,12 +30,19 @@ function Relationships({ setGameTitle, setDialogContent,setProgressBar }) {
     const contentDialog = (
       <>
         <Typography variant="h3"> Relationships</Typography>
-        <Typography variant="subtitle1">
-          {" "}
-          klfda;lksdfjadsl;kf asd;kfj dsa;lkfj asd;lfkjdsa lf;kadjs fl;kjs
-          dflkdasjf lsadkjfa kfjj sld fsljf slkfja l;skj{" "}
+        <Typography variant="h5">
+        In this exercise, you must create a relation (simple phrase)  between the given two words.
         </Typography>
-        <Button> this is cool then</Button>
+
+        <Typography variant="h5">
+          {'🌈'} A good 6 min. read before starting =>   <a href='https://www.mindtools.com/memory.html'>{'📖'}</a>
+        </Typography>
+
+        <Typography variant='h6'>Remember to follow the SEE Principle for each relation</Typography>
+    <Typography variant='subtitle1' >{'🥶'}Senses: (use them!). Use all of five your senses to remember what you are attempting to learn</Typography>
+    <Typography variant='subtitle1' >{'😱'} Exaggerate: when trying to remember something, exaggerate the way it appears in your mind.</Typography>
+        <Typography variant='subtitle1' >{'⚡'} Energize: animate whatever memory you are attempting to form</Typography>
+        
       </>
     );
     setDialogContent(contentDialog);
@@ -45,7 +53,7 @@ function Relationships({ setGameTitle, setDialogContent,setProgressBar }) {
     if (userValue) {
       getRelationships(userValue).then(res => {
         totalRelations.current = res.relations;
-        console.log(res.relations)
+        // console.log(res.relations)
         if(res.relations < 30){
           setProgressBar((res.relations * 100)/30);
         }else{
@@ -53,7 +61,7 @@ function Relationships({ setGameTitle, setDialogContent,setProgressBar }) {
         }
 
       });
-      console.log("db read");
+      // console.log("db read");
     }
     return () => {
       firebase.auth().onAuthStateChanged(user => {

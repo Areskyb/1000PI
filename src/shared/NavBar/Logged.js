@@ -34,7 +34,7 @@ function Logged(){
             <>
         <Typography variant= "h6" style={{marginRight:10}}>{user.current.displayName}</Typography>
         {user.current.photoURL? <Avatar alt="Cindy Baker" src={user.current.photoURL}/>: {}}
-        {console.log(user.photoURL)}
+        {/* {console.log(user.photoURL)} */}
         <Button onClick={(e) => signOut(e)}>
         <ExitToApp style ={{marginLeft:10}}></ExitToApp>
         </Button>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   Route,
   BrowserRouter as Router,
@@ -59,7 +59,7 @@ function GameConatainer(){
 
     return(
         <Container style={style}>
-               <AppBar position="static">
+               <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             {gameTitle}
@@ -73,7 +73,7 @@ function GameConatainer(){
 
       <Switch>
           <Route exact path="/" >
-            <Track setGameTitle={setGameTitle} setProgressBar={setProgressBar}></Track>
+            <Track setGameTitle={setGameTitle} setProgressBar={setProgressBar} setDialogContent={setDialogContent}></Track>
           </Route>
 
           <Route exact path="/Relationships">
@@ -81,23 +81,23 @@ function GameConatainer(){
           </Route>
 
           <Route exact path="/10 Words Challenge">
-            <WordChallenge words={10} setGameTitle={setGameTitle} setProgressBar={setProgressBar}></WordChallenge>
+            <WordChallenge words={10} setGameTitle={setGameTitle} setProgressBar={setProgressBar} setDialogContent={setDialogContent}></WordChallenge>
           </Route>
           
           <Route exact path="/100 Words Challenge">
-            <WordChallenge words={100} setGameTitle={setGameTitle} setProgressBar={setProgressBar}></WordChallenge>
+            <WordChallenge words={100} setGameTitle={setGameTitle} setProgressBar={setProgressBar} setDialogContent={setDialogContent}></WordChallenge>
           </Route>
 
           <Route exact path="/Words to numbers">
-            <Decoding setGameTitle={setGameTitle} setProgressBar={setProgressBar}></Decoding>
+            <Decoding setGameTitle={setGameTitle} setProgressBar={setProgressBar} setDialogContent={setDialogContent}></Decoding>
           </Route>
 
           <Route exact path="/Numbers to Words">
-            <WordDecoding setGameTitle={setGameTitle} setProgressBar={setProgressBar}></WordDecoding>
+            <WordDecoding setGameTitle={setGameTitle} setProgressBar={setProgressBar} setDialogContent={setDialogContent}></WordDecoding>
           </Route>
 
           <Route exact path="/1000 PI">
-            <ThousandPi setGameTitle={setGameTitle} setProgressBar={setProgressBar}></ThousandPi>
+            <ThousandPi setGameTitle={setGameTitle} setProgressBar={setProgressBar} setDialogContent={setDialogContent}></ThousandPi>
           </Route>
       </Switch>
       </Router>

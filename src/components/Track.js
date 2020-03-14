@@ -2,14 +2,21 @@ import React, { useState, useEffect, useContext } from "react";
 import Activity from "./Activity";
 import firebase from 'firebase/app';
 import { UserContext } from "../UserContext";
-import { trackInfo } from "../Services/trackServices";
+import { trackInfo, updateTrack } from "../Services/trackServices";
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button'
+import { OpenContext } from "../OpenContext";
+import { getRelationships } from "../Services/relationshipsServices";
+
 
 
 // let query = tracksRef.where("id", "==",)
 
 // Track component loads the activities from the user
-function Track({ setGameTitle, setProgressBar }) {
+function Track({ setGameTitle, setProgressBar,setDialogContent }) {
   const { userValue,setUserValue } = useContext(UserContext);
+  const { isOpen, setIsOpen } = useContext(OpenContext);
+
 
   let defaultValues = {
     activityOne: true,
@@ -22,8 +29,46 @@ function Track({ setGameTitle, setProgressBar }) {
   // all the states That the user has achived
   const [trackState, setTrackState] = useState(defaultValues);
 
+  const unlockTracks = () => {
+    updateTrack({
+      activityOne: true,
+      activityTwo: true,
+      activityThree: true,
+      activityFour: true,
+      activityFive: true,
+      activitySix: true
+
+    },userValue);
+
+    setTrackState({
+      activityOne: true,
+      activityTwo: true,
+      activityThree: true,
+      activityFour: true,
+      activityFive: true,
+      activitySix: true
+      
+      })
+  }
+
   useEffect(() => {
     setGameTitle("Your Track");
+    const dialogContent = (
+      <>
+        <Typography variant="h3"> Your Track </Typography>
+        <Typography variant="h5">
+          Welcome to your track {'🎉'}, here you can see the progress of your activities and also all the activities that you have unlocked
+        </Typography>
+
+        <Typography variant="h3"> Do you wan't to unlock all the tracks? {'🔓'} </Typography>
+        <Button variant="contained" color="primary" onClick={() => {unlockTracks()}}>Unlock all the tracks</Button>
+
+
+
+
+      </>
+    )
+    setDialogContent(dialogContent)
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         trackInfo(user.uid).then(res => {

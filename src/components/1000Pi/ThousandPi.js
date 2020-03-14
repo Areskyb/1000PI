@@ -1,9 +1,9 @@
 import React, {useState,useEffect} from 'react';
 import { getPI } from '../../api usage/WordRecomender';
-import { Typography,TextField, ListItemText } from '@material-ui/core';
+import { Typography,TextField, Container,Button } from '@material-ui/core';
 import PiRecomender from './PiRecomender';
 
-function ThousadPi({setGameTitle,setProgressBar}){
+function ThousadPi({setGameTitle,setProgressBar,setDialogContent}){
     const pi = getPI();
     // STATES
     const [userInput,setUserInput] = useState('');
@@ -12,10 +12,31 @@ function ThousadPi({setGameTitle,setProgressBar}){
     const [currentNumbers, setCurrentNumbers] = useState(3141526535);
 
     // renders
-    const words = savedWords.map( (word,index) => <ListItemText primary = {` ${index + 1}. ${word}`} key = {index}></ListItemText>)
+    const words = savedWords.map( (word,index) => `${index + 1}.${word}, `)
     // mounting
     useEffect(() => {
         setGameTitle('1000 Pi challenge');
+        const dialogContent = (
+            <>
+         <Typography variant="h3">{'🌅'} 1000 Pi {'🌅'} </Typography>
+        <Typography variant="h5">
+            {'🌵'} Welcome to the Wild West {'🌵'}
+        </Typography>
+        <Typography variant="body1" style={{marginTop:'3%'}}>
+        Last part of this mini course on memotechnics and learning, before the explanation, I hope you have learned the necessary techniques to memorize large numbers, phone numbers, historical dates, etc. Remember that everything is easier to memorize if you are the one who create the memories, as stupid as it seems it works.
+        </Typography>
+            <Typography style={{marginTop:'5%'}} variant='h4'>How this exersice works? {'🤔'}</Typography>
+            <Typography variant='h5'>You have to write coded words from the Major system in order, that simple ... {'😂'}. Remember to make use of all the learned resources.</Typography>
+         <Typography variant='subtitle2'  > Now is up to you to memorize as long as you want from the first 1000 digits of pi {'🤩'}, you have the tools {'🧰'}</Typography>
+        <Typography variant='subtitle2' style={{marginTop:'10%'}}  > {'📩'} PLEASE, contact me if you have reached this level, explain your experience and tell me what you think about this little app, what you would improve, etc. Thank you very much for reading this! {'😘'}</Typography>
+                <Button variant="outlined" color="primary" href='mailto:areskyuk@gmail.com?subject= Feed back from 1000 Pi'>
+                    send me some feedback
+                  </Button>
+
+
+            </>
+        )
+        setDialogContent(dialogContent)
     },[setGameTitle,setTotalNumbers]);
 
 
@@ -117,8 +138,9 @@ function ThousadPi({setGameTitle,setProgressBar}){
     }
 
     return(
-    <>  <Typography variant ='subtitle1'> total numbers: {totalNumbers}</Typography>
-            <Typography variant = 'h3'>
+    <>  
+            <Typography variant ='subtitle1' style={{marginTop:'5%'}} align='center'> Memorized numbers: {totalNumbers} </Typography>
+            <Typography variant = 'h1' align='center'>
                 {currentNumbers}
             </Typography>
             <form onSubmit = {e => sumbit(e)}>
@@ -131,12 +153,10 @@ function ThousadPi({setGameTitle,setProgressBar}){
             fullWidth
             autoComplete = 'off' />
             </form>
-
+            <Container align='center' style={{marginTop:'5%'}}>
             <PiRecomender numbersToSearch={currentNumbers} setInput={setUserInput} sumbit={sumbit}></PiRecomender>
-
-            {words}
-
-
+            </Container>
+            <Typography variant='subtitle2'>{words}</Typography>
         </>
     )
 }

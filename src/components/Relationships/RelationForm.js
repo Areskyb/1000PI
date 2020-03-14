@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button'
 import { updateRelations } from '../../Services/relationshipsServices';
 import { updateTrack } from '../../Services/trackServices';
 import {UserContext} from '../../UserContext'
+import {Height} from '@material-ui/icons'
+import { Container } from '@material-ui/core';
 
 
 
@@ -42,23 +44,25 @@ function RelationForm({setResult,setWordCount,wordCount,totalRelations,setProgre
     const finishTask = event => {
         setResult(descriptions);
         updateRelations(userValue,'relations', totalRelations.current)
-        console.log('db write update relations', (totalRelations.current))
+        // console.log('db write update relations', (totalRelations.current))
 
     }
 
     if (totalRelations.current === 30){
         alert('New Level unlocked!');
         updateTrack({activityTwo: true}, userValue);
-        console.log('db write');
+        // console.log('db write');
         totalRelations.current = totalRelations.current + 1;
         finishTask()
     }
 
     return(
     <form onSubmit={submit}>
-      <TextField autoComplete="off" id="standard-basic" label="Create a relationship between this two words an then press ENTER" value={description} onChange={handleChange}  fullWidth/>
-      <Button onClick={submit}> next</Button>
-      <Button onClick={finishTask}> save </Button>
+      <TextField autoComplete="off" id="standard-basic" label="Create a relationship between this two words an then press enter." value={description} onChange={handleChange}  fullWidth/>
+      <Container align='center' style={{marginTop:'3%'}}>
+      <Button onClick={submit} variant="outlined" color="primary" style={{marginRight:'2%'}}  > next</Button>
+      <Button onClick={finishTask} variant="contained" color="primary" style={{marginLeft:'2%'}}> save </Button>
+      </Container>
     </form>
     )
 }

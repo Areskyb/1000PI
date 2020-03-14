@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Typography, Button } from "@material-ui/core";
+import { Input, Typography, Button, Container } from "@material-ui/core";
 import { updateDecoding } from "../../Services/decodingServices";
 import {updateTrack} from '../../Services/trackServices'
 import {ran } from '../../shared/nounsGetter'
@@ -74,14 +74,17 @@ function WordForm({ times, user, setProgressBar }) {
 
   return (
     <form onSubmit={checkResult}>
-      <Typography variant="h1">{currentWord}</Typography>
+      <Typography variant="h1" align='center'>{currentWord}</Typography>
+      <Container align="center">
       <Input
         type="number"
         value={userResult}
         onChange={handleChange}
+        placeholder="Add the decoded number"
         required
-      ></Input>
-      <Button onClick={e => save()}>Save</Button>
+        ></Input>
+      <Button onClick={e => save()} variant="contained" color="primary"style={{marginLeft:10}}>Save</Button>
+      </Container>
     </form>
   );
 }

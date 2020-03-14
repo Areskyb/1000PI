@@ -17,7 +17,7 @@ export const getDecoding = (uid,key) => {
         }
     })
     .catch(err => {
-        console.log("Error getting document", err);
+        // console.log("Error getting document", err);
     });
     return query
 };

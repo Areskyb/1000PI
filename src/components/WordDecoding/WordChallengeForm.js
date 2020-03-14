@@ -1,13 +1,13 @@
 
 import React, { useState } from 'react';
-import { Typography, FormGroup, TextField, Button, ListItemText } from '@material-ui/core';
+import { Typography, FormGroup, TextField, Button, ListItemText, Container } from '@material-ui/core';
 import { updateTrack } from '../../Services/trackServices';
 
 function WordChallengeForm ({times,save,user,setProgressBar}) {
 
     const [currentNumber,setCurrentNumber] = useState(Math.floor(Math.random() * 999));
     const [userResult, setUserResult] = useState('');
-    const [words, setWords] = useState(null);
+    const [words, setWords] = useState(true);
     // value if the answer is correct
     const [isCorrect, setIsCorrect] = useState(false);
 
@@ -101,15 +101,14 @@ function WordChallengeForm ({times,save,user,setProgressBar}) {
             
         }).then( 
             res => {
-                 setWords(res.results.data.map( (word,index) => {
-                    return (
-                        <ListItemText
-                        key = {index}
-                        primary={word}
-                        >
-                        </ListItemText>
-                    );
-                }));
+                if (res.results.total === 0){
+                    setWords("Sorry, couldn't find any word... 😞")
+                }else{
+
+                    setWords(res.results.data.map( (word,index) => {
+                        return ` ${word}, `;
+                    }));
+                }
             }
         )
     }
@@ -126,7 +125,7 @@ function WordChallengeForm ({times,save,user,setProgressBar}) {
     return(
         <>
         <form onSubmit={submit}>
-            <Typography variant="h2">{currentNumber}</Typography>
+            <Typography style={{marginTop:'5%'}} align='center' variant="h1">{currentNumber}</Typography>
             <FormGroup>
             <TextField
                 onChange={handleChange}
@@ -137,15 +136,15 @@ function WordChallengeForm ({times,save,user,setProgressBar}) {
                 ></TextField>
             </FormGroup>
         </form>
+        <Container align='center' style={{marginTop:'2%'}}>
         <Button variant="contained" color="primary" onClick= {(e) => recomendedWords()}>
             Get words that match
         </Button>
         <Button variant="contained" color="secondary" onClick= {(e) => save()}>
             Save
         </Button>
-        
-
-        {words}
+        </Container>
+    <Typography variant='subtitle2'>{words}</Typography>
 
         </>
     );

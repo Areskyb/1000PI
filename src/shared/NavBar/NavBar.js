@@ -10,7 +10,6 @@ import firebase from '@firebase/app';
 import '@firebase/auth';
 import "typeface-roboto";
 import { UserContext } from "../../UserContext";
-
 // import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles(theme => ({
@@ -21,10 +20,10 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
+    cursor:'pointer'
   }
 }));
-
 // A new way to define stateless Components? haha
 export default function NavBar() {
   const { userValue, setUserValue } = useContext(UserContext);
@@ -56,14 +55,14 @@ export default function NavBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" color='primary'>
         <Toolbar>
           <Typography
             variant="h4"
             className={classes.title}
             onClick={e => (window.location.href = "/")}
-          >
-            1000 PI
+            >
+            1000 π
           </Typography>
 
           {/* displays if the user is logged or not logged */}
@@ -73,4 +72,5 @@ export default function NavBar() {
       </AppBar>
     </div>
   );
+
 }

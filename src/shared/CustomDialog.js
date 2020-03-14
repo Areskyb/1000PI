@@ -1,37 +1,34 @@
-import React from 'react';
-import {IconButton} from '@material-ui/core/'
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import React, { useContext } from 'react';
+import {IconButton, Typography} from '@material-ui/core/'
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
+import { OpenContext } from '../OpenContext';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function CustomDialog({dialogContent}) {
-  const [open, setOpen] = React.useState(false);
-
+  const {isOpen,setIsOpen} = useContext(OpenContext);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    setIsOpen(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setIsOpen(false);
   };
 
   return (
     <div>
-      <IconButton onClick={handleClickOpen}>
-        Need 
-         <InfoOutlinedIcon></InfoOutlinedIcon>
-        ? 
-      </IconButton>
+      <Typography variant="h4" onClick={handleClickOpen} style={{cursor:'pointer'}}>
+        What to do?
+      </Typography>
       <Dialog
-        open={open}
+        open={isOpen}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}

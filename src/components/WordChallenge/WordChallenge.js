@@ -1,5 +1,5 @@
 import React,{useEffect,useState, useContext} from 'react';
-import { Button, Typography } from '@material-ui/core';
+import { Button, Typography, Container, } from '@material-ui/core';
 import WordTest from './WordTest';
 import { getWordChallenges, updateWordChallenges } from '../../Services/wordChallengeServices';
 import { updateTrack } from '../../Services/trackServices';
@@ -7,14 +7,31 @@ import { UserContext } from '../../UserContext';
 import {ran } from '../../shared/nounsGetter'
 // import Words
 
-function WordChallenge({setGameTitle,words,setProgressBar}){
+function WordChallenge({setGameTitle,words,setProgressBar,setDialogContent}){
    const [wordList,setWords] = useState(ran(words));
    const [count, setCount] = useState(0);
    const [inTest,setTest] = useState(false);
    const [totalWords, setTotalWords] = useState(null)
    const {userValue} = useContext(UserContext)
    useEffect(() => {
-       setGameTitle("Word Challenge!")
+       setGameTitle("Word Challenge!");
+       const DialogContent = (
+           <>
+            <Typography variant="h3"> Word Challenge !</Typography>
+        <Typography variant="h5">
+        In this exercise, you must use your relationship abilities to be able to create relationships between the given words!
+        </Typography>
+
+        <Typography variant="h5" style={{marginTop:'3%'}}>
+          {'🌈'} A really good 4min. video before starting =>   <a href='https://www.youtube.com/watch?v=p9IOqd1LpkA'>{'🎬'}</a>
+        </Typography>
+        <Typography variant='subtitle2'  > Try to follow the {'🧠'} Memory Palace {'🏡'} Technique and use it with 5-15 words per room. </Typography>
+        <Typography variant='subtitle2'  > This exercise is about imporving your concentration and creativity, so go ahead {'🤠'} and practice!</Typography>
+
+
+           </>
+       )
+       setDialogContent(DialogContent)
        return () => {
        };
    }, [setGameTitle])
@@ -30,10 +47,10 @@ function WordChallenge({setGameTitle,words,setProgressBar}){
                       setProgressBar(100)
                   }
             });
-            console.log('total words',totalWords);
-            console.log('words', words);
+            // console.log('total words',totalWords);
+            // console.log('words', words);
 
-            console.log('db read');
+            // console.log('db read');
 
 
         }
@@ -43,8 +60,8 @@ function WordChallenge({setGameTitle,words,setProgressBar}){
    useEffect(()=> {
      if (totalWords === 10  && words !==100){
        updateTrack({activityThree:true}, userValue);
-       console.log('read and write');
-       alert('New level unlocked!')
+    //    console.log('read and write');
+    //    alert('New level unlocked!')
        updateWordChallenges(userValue, {[words]:(totalWords + 1)});
 
      }
@@ -74,9 +91,14 @@ function WordChallenge({setGameTitle,words,setProgressBar}){
     if(count === words){
         return(
             <>
-            {!inTest?<Button onClick={e => setCount(0)}>Back to words</Button>: <Typography variant='h4'></Typography> }
+            <Container align='center' style={{marginTop:'10%'}}>
+
+            {!inTest?<Button style={{marginRight:10}} variant="outlined" color="primary" onClick={e => setCount(0)}>Back to words</Button>: <Typography variant='h4'></Typography> }
             <WordTest wordList={wordList} setTest={setTest} totalWords={totalWords} setTotalWords={setTotalWords} setProgressBar={setProgressBar}></WordTest>
-            <Button onClick={e => {
+            <Button
+            style={{marginLeft:10}}
+            variant="outlined" color="primary"
+            onClick={e => {
                 setCount(0);
                 setWords(ran(words));
                 getWordChallenges(userValue,words).then(res => {
@@ -84,16 +106,19 @@ function WordChallenge({setGameTitle,words,setProgressBar}){
                 });
                 console.log('db read')
             }}>{inTest ? "cancel" : "New set of words"}</Button>
+            </Container>
             </>
         )
     }
 
     return(
         <>
-        <Typography variant="h1">{wordList[count]}</Typography>
-        <Button onClick={e => prev(e)}>prev</Button>
-        <Button onClick={e =>next(e)}>next</Button>
-        <Typography variant="h3">Word Count: {count + 1}</Typography>
+        <Typography variant="h1" align='center' style={{marginTop:'5%'}}>{wordList[count]}</Typography>
+        <Typography variant="h4" align='center'>Words: {count + 1}</Typography>
+        <Container align='center' style={{marginTop:'5%'}}>
+        <Button onClick={e => prev(e)} variant="outlined" color="primary" style={{marginRight:10}}>prev</Button>
+        <Button onClick={e =>next(e)} variant="contained" color="primary" style={{marginLeft:10}}>next</Button>
+        </Container>
         {/* <MindPalace words ={ wordList }></MindPalace> */}
         </>
     )

@@ -1,5 +1,5 @@
 import React,{ useState, useContext } from 'react'
-import { Button, ListItem, Typography } from '@material-ui/core';
+import { Button, ListItem, Typography, ListItemText } from '@material-ui/core';
 import { UserContext } from '../../UserContext'
 import { updateWordChallenges } from '../../Services/wordChallengeServices'
 function WordTest({wordList,setTest,totalWords,setTotalWords,setProgressBar}){
@@ -19,7 +19,7 @@ function WordTest({wordList,setTest,totalWords,setTotalWords,setProgressBar}){
             for(let i = 0; i < num; i++){
                 let randomWord = wordList[Math.floor(Math.random() * wordList.length)]
                 //will check if the word is already in the result arry
-                // console.log("result=>",result, " random word =>", randomWord, "includes? =>",result.includes(randomWord))
+                console.log("result=>",result, " random word =>", randomWord, "includes? =>",result.includes(randomWord))
                 if(!result.includes(randomWord) && randomWord !== correctWord ){
                     result.push(randomWord);
                 }else{
@@ -31,7 +31,7 @@ function WordTest({wordList,setTest,totalWords,setTotalWords,setProgressBar}){
 
                 if(word !== undefined){
                     return(
-                        <ListItem key={index}  button onClick={e => console.log("incorrect")}> {word} </ListItem>
+                        <ListItemText style={{border:'1px solid rgb(66,83,175)',borderRadius:10,cursor:'pointer'}} key={index}  onClick={e => console.log("incorrect")}> {word} </ListItemText>
                         )
                     }
                     return null;
@@ -44,7 +44,7 @@ function WordTest({wordList,setTest,totalWords,setTotalWords,setProgressBar}){
     // creates the correct button appart
     function correctOtion(){
         return(
-            <ListItem key={Date.now()}  button onClick={e => nextQuestion()}> {wordList[count]} </ListItem>
+            <ListItemText style={{border:'1px solid rgb(66,83,175)',borderRadius:10,cursor:'pointer'}}  key={Date.now()}  onClick={e => nextQuestion()}> {wordList[count]} </ListItemText>
         )
     }
 
@@ -76,7 +76,7 @@ function WordTest({wordList,setTest,totalWords,setTotalWords,setProgressBar}){
             )
         }else if(!isWon){
             return(
-                <Button onClick={e => {setInTest(true);setTest(true)}}>Make Test</Button>
+                <Button variant="outlined" color="secondary" onClick={e => {setInTest(true);setTest(true)}}>Make Test</Button>
             )
         }else{
               let numOfWords = wordList.length
@@ -91,7 +91,7 @@ function WordTest({wordList,setTest,totalWords,setTotalWords,setProgressBar}){
                 }
 
             return(
-                <Typography variant ="h1">You won!</Typography>
+                <Typography align='center' variant ="h1" style={{marginTop:'10%'}}>You won!</Typography>
             )
         }
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ran } from '../../shared/nounsGetter';
+import { Typography } from '@material-ui/core';
 
 function WordsProvider({wordCount}){
     // generates random words from package
@@ -15,7 +16,8 @@ function WordsProvider({wordCount}){
 
 
     return(
-    <h3>{(words[wordCount])} =====> {words[wordCount + 1]}</h3>
+        <Typography variant="h2" align="center" style={{marginTop:'5%', marginBottom:'5%'}}> {(words[wordCount])} => {words[wordCount + 1]}</Typography>
+    // <h3>{(words[wordCount])} =====> {words[wordCount + 1]}</h3>
     )
 }
 
