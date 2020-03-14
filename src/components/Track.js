@@ -60,7 +60,7 @@ function Track({ setGameTitle, setProgressBar,setDialogContent }) {
           Welcome to your track {'🎉'}, here you can see the progress of your activities and also all the activities that you have unlocked
         </Typography>
 
-        <Typography variant="h3"> Do you wan't to unlock all the tracks? {'🔓'} </Typography>
+        <Typography variant="h3"> Do you want to unlock all the tracks? {'🔓'} </Typography>
         <Button variant="contained" color="primary" onClick={() => {unlockTracks()}}>Unlock all the tracks</Button>
 
 

@@ -31,7 +31,7 @@ function Relationships({ setGameTitle, setDialogContent,setProgressBar }) {
       <>
         <Typography variant="h3"> Relationships</Typography>
         <Typography variant="h5">
-        In this exercise, you must create a relation (simple phrase)  between the given two words.
+        In this exercise, you must create a relation (simple phrase)  between the two given words.
         </Typography>
 
         <Typography variant="h5">
@@ -39,9 +39,9 @@ function Relationships({ setGameTitle, setDialogContent,setProgressBar }) {
         </Typography>
 
         <Typography variant='h6'>Remember to follow the SEE Principle for each relation</Typography>
-    <Typography variant='subtitle1' >{'🥶'}Senses: (use them!). Use all of five your senses to remember what you are attempting to learn</Typography>
+    <Typography variant='subtitle1' >{'🥶'} Senses: (use them!). Use all of your five senses to remember what you are attempting to learn.</Typography>
     <Typography variant='subtitle1' >{'😱'} Exaggerate: when trying to remember something, exaggerate the way it appears in your mind.</Typography>
-        <Typography variant='subtitle1' >{'⚡'} Energize: animate whatever memory you are attempting to form</Typography>
+        <Typography variant='subtitle1' >{'⚡'} Energize: animate whatever memory you are attempting to form.</Typography>
         
       </>
     );

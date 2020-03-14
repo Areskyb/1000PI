@@ -3,6 +3,7 @@ import WordChallengeForm from './WordChallengeForm';
 import { UserContext } from '../../UserContext'
 import { getWordDecoding, updateWordDecoding} from '../../Services/wordDecodingServices';
 import Typography from '@material-ui/core/Typography';
+import Buttonf from '@material-ui/core/Button'
 
 function WordDecoding({setGameTitle, setProgressBar,setDialogContent}){
     const times = useRef(null);
@@ -48,8 +49,12 @@ function WordDecoding({setGameTitle, setProgressBar,setDialogContent}){
 
         <Typography variant="h5">
             Also, I've developed an algorithm that will search an specific word that matches the number displayed if you are struggling, you can get the number pressing into the "get words that match" button.
-            Wooow, I think that that servise deserves some feedback {'😉'}. 
+            Wooow, I think that this service deserves some feedback {'😉'}. 
         </Typography>
+
+                <Button variant="outlined" color="primary" href='mailto:areskyuk@gmail.com?subject= Feed back from 1000 Pi'>
+                    send me some feedback
+                  </Button>
 
         <Typography variant='subtitle2' style={{marginTop:'10%'}}  > {'📅'} REMEMBER that this is an exercise designed to get used to the Major System, even if you have passed the level, if you don't feel comfortable enough, keep practicing so you can decipher words at a natural pace.</Typography>
 

@@ -24,7 +24,7 @@ export default function CustomDialog({dialogContent}) {
 
   return (
     <div>
-      <Typography variant="h4" onClick={handleClickOpen} style={{cursor:'pointer'}}>
+      <Typography variant="subtitle2" onClick={handleClickOpen} style={{cursor:'pointer'}}>
         What to do?
       </Typography>
       <Dialog

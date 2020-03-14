@@ -58,7 +58,7 @@ function RelationForm({setResult,setWordCount,wordCount,totalRelations,setProgre
 
     return(
     <form onSubmit={submit}>
-      <TextField autoComplete="off" id="standard-basic" label="Create a relationship between this two words an then press enter." value={description} onChange={handleChange}  fullWidth/>
+      <TextField autoComplete="off" id="standard-basic" label="Create a relationship" value={description} onChange={handleChange}  fullWidth/>
       <Container align='center' style={{marginTop:'3%'}}>
       <Button onClick={submit} variant="outlined" color="primary" style={{marginRight:'2%'}}  > next</Button>
       <Button onClick={finishTask} variant="contained" color="primary" style={{marginLeft:'2%'}}> save </Button>

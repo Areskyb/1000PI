@@ -23,11 +23,11 @@ function ThousadPi({setGameTitle,setProgressBar,setDialogContent}){
             {'🌵'} Welcome to the Wild West {'🌵'}
         </Typography>
         <Typography variant="body1" style={{marginTop:'3%'}}>
-        Last part of this mini course on memotechnics and learning, before the explanation, I hope you have learned the necessary techniques to memorize large numbers, phone numbers, historical dates, etc. Remember that everything is easier to memorize if you are the one who create the memories, as stupid as it seems it works.
+         Last part of this mini course on memotechnics and learning. Hopefully, you have already learned all the necessary techniques to memorize large numbers, phone numbers, historical dates, etc. Remember that everything is easier to memorize if you are the one who creates the memories, as silly as that might seem, it really works wonders.
         </Typography>
-            <Typography style={{marginTop:'5%'}} variant='h4'>How this exersice works? {'🤔'}</Typography>
-            <Typography variant='h5'>You have to write coded words from the Major system in order, that simple ... {'😂'}. Remember to make use of all the learned resources.</Typography>
-         <Typography variant='subtitle2'  > Now is up to you to memorize as long as you want from the first 1000 digits of pi {'🤩'}, you have the tools {'🧰'}</Typography>
+            <Typography style={{marginTop:'5%'}} variant='h4'>How does the exersice work? {'🤔'}</Typography>
+            <Typography variant='h5'>You just have to write the coded words from the Major system in order, is that simple ... {'😂'}. Remember to use all the resources from previous exersices.</Typography>
+         <Typography variant='subtitle2'  > Now is up to you to memorize as many digits of Pi as you want {'🤩'}, you have the tools! {'🧰'}</Typography>
         <Typography variant='subtitle2' style={{marginTop:'10%'}}  > {'📩'} PLEASE, contact me if you have reached this level, explain your experience and tell me what you think about this little app, what you would improve, etc. Thank you very much for reading this! {'😘'}</Typography>
                 <Button variant="outlined" color="primary" href='mailto:areskyuk@gmail.com?subject= Feed back from 1000 Pi'>
                     send me some feedback
@@ -140,7 +140,7 @@ function ThousadPi({setGameTitle,setProgressBar,setDialogContent}){
     return(
     <>  
             <Typography variant ='subtitle1' style={{marginTop:'5%'}} align='center'> Memorized numbers: {totalNumbers} </Typography>
-            <Typography variant = 'h1' align='center'>
+            <Typography variant = 'h4' align='center'>
                 {currentNumbers}
             </Typography>
             <form onSubmit = {e => sumbit(e)}>

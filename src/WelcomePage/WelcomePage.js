@@ -201,7 +201,7 @@ export  function WelcomePage() {
                 Developed by Aresky Berkane
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-        I am a software developer passionate about learning and creating new ideas, inventions and passions. If you are a recruiter or have a startup and would like to have me on your team, do not hesitate to contact me :)
+        I am a software developer passionated about learning and creating new ideas and inventions. If you are a recruiter or have a startup and would like to have me on your team, please contact me :)
         </Typography>
         <Footer />
       </footer>

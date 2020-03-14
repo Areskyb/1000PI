@@ -19,14 +19,14 @@ function WordChallenge({setGameTitle,words,setProgressBar,setDialogContent}){
            <>
             <Typography variant="h3"> Word Challenge !</Typography>
         <Typography variant="h5">
-        In this exercise, you must use your relationship abilities to be able to create relationships between the given words!
+        In this exercise, you must use your relationship abilities to connect the given words!
         </Typography>
 
         <Typography variant="h5" style={{marginTop:'3%'}}>
           {'🌈'} A really good 4min. video before starting =>   <a href='https://www.youtube.com/watch?v=p9IOqd1LpkA'>{'🎬'}</a>
         </Typography>
-        <Typography variant='subtitle2'  > Try to follow the {'🧠'} Memory Palace {'🏡'} Technique and use it with 5-15 words per room. </Typography>
-        <Typography variant='subtitle2'  > This exercise is about imporving your concentration and creativity, so go ahead {'🤠'} and practice!</Typography>
+        <Typography variant='subtitle2'  > Try to follow the {'🧠'} Memory Palace {'🏡'} Technique and use between 5-15 words per room. </Typography>
+        <Typography variant='subtitle2'  > This exercise is about improving your concentration and creativity, so go ahead {'🤠'} and practice!</Typography>
 
 
            </>
