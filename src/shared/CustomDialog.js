@@ -25,7 +25,7 @@ export default function CustomDialog({dialogContent}) {
   return (
     <div>
       <Typography variant="subtitle2" onClick={handleClickOpen} style={{cursor:'pointer'}}>
-        What to do?
+        Click Me!
       </Typography>
       <Dialog
         open={isOpen}

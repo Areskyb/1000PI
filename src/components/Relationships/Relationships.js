@@ -22,14 +22,14 @@ function Relationships({ setGameTitle, setDialogContent,setProgressBar }) {
   // Title
   useEffect(() => {
     // console.log("load relations");
-    setGameTitle("Relationships");
+    setGameTitle("Relations!");
   }, [setGameTitle]);
   // Dialog content
   useEffect(() => {
     // info for the level
     const contentDialog = (
       <>
-        <Typography variant="h3"> Relationships</Typography>
+        <Typography variant="h3"> Relationships!</Typography>
         <Typography variant="h5">
         In this exercise, you must create a relation (simple phrase)  between the two given words.
         </Typography>

@@ -3,7 +3,7 @@ import WordChallengeForm from './WordChallengeForm';
 import { UserContext } from '../../UserContext'
 import { getWordDecoding, updateWordDecoding} from '../../Services/wordDecodingServices';
 import Typography from '@material-ui/core/Typography';
-import Buttonf from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button'
 
 function WordDecoding({setGameTitle, setProgressBar,setDialogContent}){
     const times = useRef(null);

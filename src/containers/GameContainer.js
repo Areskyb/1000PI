@@ -5,7 +5,7 @@ import {
   Switch,
 } from "react-router-dom";
 import CustomDialog from '../shared/CustomDialog'
-import Relationships from '../components/Relationships/Relationships'
+import Relations from '../components/Relationships/Relationships'
 import Track from '../components/Track'
 import WordDecoding from '../components/WordDecoding/WordDecoding'
 import WordChallenge from '../components/WordChallenge/WordChallenge'
@@ -76,8 +76,8 @@ function GameConatainer(){
             <Track setGameTitle={setGameTitle} setProgressBar={setProgressBar} setDialogContent={setDialogContent}></Track>
           </Route>
 
-          <Route exact path="/Relationships">
-            <Relationships setGameTitle={setGameTitle} setProgressBar={setProgressBar} setDialogContent={setDialogContent} ></Relationships>
+          <Route exact path="/Relations">
+            <Relations setGameTitle={setGameTitle} setProgressBar={setProgressBar} setDialogContent={setDialogContent} ></Relations>
           </Route>
 
           <Route exact path="/10 Words Challenge">

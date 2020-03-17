@@ -101,7 +101,7 @@ function Track({ setGameTitle, setProgressBar,setDialogContent }) {
     return (
       <>
         <Activity
-          activityName="Relationships"
+          activityName="Relations"
           acitvityNumber="1"
           isAchived={trackState.activityOne}
         ></Activity>

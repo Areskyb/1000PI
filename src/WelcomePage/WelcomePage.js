@@ -76,10 +76,11 @@ export  function WelcomePage() {
   
   
   let cards = [1,2,3,4];
-  const [rating,setRating] = useState(2)
+  const [rating,setRating] = useState(0)
   const [comment,setComment] = useState('')
   const [name,setName] = useState('')
   const [isSucces,setIsSucces] = useState(false)
+  const [isAlert,setIsAlert] =useState(false);
   
   const classes = useStyles();
     useEffect(() => {
@@ -89,9 +90,13 @@ export  function WelcomePage() {
 
   const submitComment = (event) => {
     // console.log('name',name,'comment',comment,'rating',rating);
-    addComment(rating,comment,name);
-    setIsSucces(true);
-    setRating(2);
+    if(comment !== '' && name !== ''){
+      setIsSucces(true);
+      addComment(rating,comment,name);
+    }else{
+      setIsAlert(true)
+    }
+    setRating(0);
     setComment('');
     setName('')
    
@@ -100,6 +105,10 @@ export  function WelcomePage() {
 
   if(isSucces){
     setTimeout( () => setIsSucces(false),3000);
+  }
+
+  if(isAlert){
+    setTimeout( () => setIsAlert(false),3000);
   }
 
   return (
@@ -113,7 +122,7 @@ export  function WelcomePage() {
               Welcome to 1000 Pi
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-            Learn to improve your memory through simple exercises based on mnemonic principles, learn the first thousand decimals of Pi using the Major System and the Mental Palace. Start now by logging in and let the journey begin!
+            Learn to improve your memory through simple exercises based on mnemonic principles, learn the first thousand decimals of Pi by using the Major System and the Mental Palace. Start now by logging in and let the journey begin!
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
@@ -191,7 +200,12 @@ export  function WelcomePage() {
                  {isSucces ? <Alert severity="success">
                     <AlertTitle>Success</AlertTitle>
                         Thank you for the feedback! {'🧡'}
-                  </Alert>:<Typography></Typography> }       
+                  </Alert>:<Typography></Typography> }  
+
+                  {isAlert ? <Alert severity="error">
+  <AlertTitle>Error</AlertTitle>
+  Please add all the date from the form
+</Alert>: <Typography></Typography>}     
           </Grid>
         </Container>
       </main>
