@@ -1,22 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import Activity from "./Activity";
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 import { UserContext } from "../UserContext";
 import { trackInfo, updateTrack } from "../Services/trackServices";
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button'
-import { OpenContext } from "../OpenContext";
-import { getRelationships } from "../Services/relationshipsServices";
-
-
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
 // let query = tracksRef.where("id", "==",)
 
 // Track component loads the activities from the user
-function Track({ setGameTitle, setProgressBar,setDialogContent }) {
-  const { userValue,setUserValue } = useContext(UserContext);
-  const { isOpen, setIsOpen } = useContext(OpenContext);
-
+function Track({ setGameTitle, setProgressBar, setDialogContent }) {
+  const { userValue, setUserValue } = useContext(UserContext);
 
   let defaultValues = {
     activityOne: true,
@@ -24,21 +18,23 @@ function Track({ setGameTitle, setProgressBar,setDialogContent }) {
     activityThree: false,
     activityFour: false,
     activityFive: false,
-    activitySix: false
+    activitySix: false,
   };
   // all the states That the user has achived
   const [trackState, setTrackState] = useState(defaultValues);
 
   const unlockTracks = () => {
-    updateTrack({
-      activityOne: true,
-      activityTwo: true,
-      activityThree: true,
-      activityFour: true,
-      activityFive: true,
-      activitySix: true
-
-    },userValue);
+    updateTrack(
+      {
+        activityOne: true,
+        activityTwo: true,
+        activityThree: true,
+        activityFour: true,
+        activityFive: true,
+        activitySix: true,
+      },
+      userValue
+    );
 
     setTrackState({
       activityOne: true,
@@ -46,10 +42,9 @@ function Track({ setGameTitle, setProgressBar,setDialogContent }) {
       activityThree: true,
       activityFour: true,
       activityFive: true,
-      activitySix: true
-      
-      })
-  }
+      activitySix: true,
+    });
+  };
 
   useEffect(() => {
     setGameTitle("Your Track");
@@ -57,30 +52,37 @@ function Track({ setGameTitle, setProgressBar,setDialogContent }) {
       <>
         <Typography variant="h3"> Your Track </Typography>
         <Typography variant="h5">
-          Welcome to your track {'🎉'}, here you can see the progress of your activities and also all the activities that you have unlocked
+          Welcome to your track {"🎉"}, here you can see the progress of your
+          activities and also all the activities that you have unlocked
         </Typography>
 
-        <Typography variant="h3"> Do you want to unlock all the tracks? {'🔓'} </Typography>
-        <Button variant="contained" color="primary" onClick={() => {unlockTracks()}}>Unlock all the tracks</Button>
-
-
-
-
+        <Typography variant="h3">
+          {" "}
+          Do you want to unlock all the tracks? {"🔓"}{" "}
+        </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            unlockTracks();
+          }}
+        >
+          Unlock all the tracks
+        </Button>
       </>
-    )
-    setDialogContent(dialogContent)
-    firebase.auth().onAuthStateChanged(user => {
+    );
+    setDialogContent(dialogContent);
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        trackInfo(user.uid).then(res => {
+        trackInfo(user.uid).then((res) => {
           setTrackState(res);
           let total = 0;
-          for (const activity in res){
-              if (res[activity] === true){total++}
+          for (const activity in res) {
+            if (res[activity] === true) {
+              total++;
+            }
           }
-          setProgressBar(Math.floor((100 * total)/6));
-
-
-
+          setProgressBar(Math.floor((100 * total) / 6));
         });
       } else {
         setUserValue(null);
@@ -88,13 +90,12 @@ function Track({ setGameTitle, setProgressBar,setDialogContent }) {
     });
 
     return () => {
-      firebase.auth().onAuthStateChanged(user => {
+      firebase.auth().onAuthStateChanged((user) => {
         if (user) {
         }
       });
     };
-  }, [setGameTitle,setUserValue]);
-
+  }, [setGameTitle, setUserValue]);
 
   // if the user has a state, then load the state of the track, if not set a default one.
   if (userValue !== null) {
@@ -120,11 +121,11 @@ function Track({ setGameTitle, setProgressBar,setDialogContent }) {
           acitvityNumber="4"
           isAchived={trackState.activityFour}
         ></Activity>
-          <Activity
-            activityName="100 Words Challenge"
-            acitvityNumber="5"
-            isAchived={trackState.activityFive}
-          ></Activity>
+        <Activity
+          activityName="100 Words Challenge"
+          acitvityNumber="5"
+          isAchived={trackState.activityFive}
+        ></Activity>
         <Activity
           activityName="1000 PI"
           acitvityNumber="6"

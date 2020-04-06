@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
-import {IconButton, Typography} from '@material-ui/core/'
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import Slide from '@material-ui/core/Slide';
-import { OpenContext } from '../OpenContext';
+import React, { useContext } from "react";
+import { Typography } from "@material-ui/core/";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import Slide from "@material-ui/core/Slide";
+import { OpenContext } from "../OpenContext";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function CustomDialog({dialogContent}) {
-  const {isOpen,setIsOpen} = useContext(OpenContext);
+export default function CustomDialog({ dialogContent }) {
+  const { isOpen, setIsOpen } = useContext(OpenContext);
 
   const handleClickOpen = () => {
     setIsOpen(true);
@@ -24,7 +24,11 @@ export default function CustomDialog({dialogContent}) {
 
   return (
     <div>
-      <Typography variant="subtitle2" onClick={handleClickOpen} style={{cursor:'pointer'}}>
+      <Typography
+        variant="subtitle2"
+        onClick={handleClickOpen}
+        style={{ cursor: "pointer" }}
+      >
         Click Me!
       </Typography>
       <Dialog
@@ -35,16 +39,13 @@ export default function CustomDialog({dialogContent}) {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogContent>
-            {dialogContent}
-        </DialogContent>
+        <DialogContent>{dialogContent}</DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-          Cool!  
+            Cool!
           </Button>
         </DialogActions>
       </Dialog>
     </div>
   );
 }
-
